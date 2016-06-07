@@ -1,5 +1,7 @@
 package com.shunix.postman.core;
 
+import android.text.TextUtils;
+
 /**
  * Wrapper for a notification.
  *
@@ -7,6 +9,7 @@ package com.shunix.postman.core;
  * @since 2016/6/7
  */
 public class NotificationEntity {
+    private final static String DIVIDER = "\n";
     private byte[] mIcon;
     private String mPackageName;
     private long mTimestamp;
@@ -51,5 +54,21 @@ public class NotificationEntity {
 
     public void setTitle(String title) {
         mTitle = title;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        if (!TextUtils.isEmpty(mPackageName)) {
+            builder.append("Package Name: ").append(mPackageName).append(DIVIDER);
+        }
+        if (!TextUtils.isEmpty(mTitle)) {
+            builder.append("Title: ").append(mTitle).append(DIVIDER);
+        }
+        if (!TextUtils.isEmpty(mContent)) {
+            builder.append("Content: ").append(mContent).append(DIVIDER);
+        }
+        builder.append("Timestamp: ").append(mTimestamp);
+        return builder.toString();
     }
 }
