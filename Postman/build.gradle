@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         applicationId "com.shunix.postman"
-        minSdkVersion 14
+        minSdkVersion 18
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
