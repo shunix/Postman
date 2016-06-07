@@ -2,10 +2,12 @@ package com.shunix.postman.util;
 
 import android.app.Notification;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.provider.Settings;
 import android.service.notification.StatusBarNotification;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,6 +23,8 @@ import java.io.ByteArrayOutputStream;
  */
 public final class CommonUtils {
     private final static String TAG = CommonUtils.class.getSimpleName();
+    private final static String NOTIFICATION_LISTENERS_ACTION = "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS";
+    private final static String NOTIFICATION_LISTENERS_KEY = "enabled_notification_listeners";
 
     public static Drawable getPackageIcon(Context context, String packageName) {
         if (context == null || TextUtils.isEmpty(packageName)) {
@@ -69,7 +73,7 @@ public final class CommonUtils {
     }
 
     public static NotificationEntity generateNotificationEntity(Context context, StatusBarNotification statusBarNotification) {
-        if (statusBarNotification != null) {
+        if (context != null && statusBarNotification != null) {
             NotificationEntity entity = new NotificationEntity();
             if (!TextUtils.isEmpty(statusBarNotification.getPackageName())) {
                 entity.setPackageName(statusBarNotification.getPackageName());
@@ -84,7 +88,7 @@ public final class CommonUtils {
             entity.setTimestamp(statusBarNotification.getPostTime());
             Notification notification = statusBarNotification.getNotification();
             if (notification != null && notification.extras != null) {
-                CharSequence title = notification.extras.getCharSequence(Notification.EXTRA_TEXT);
+                CharSequence title = notification.extras.getCharSequence(Notification.EXTRA_TITLE);
                 CharSequence content = notification.extras.getCharSequence(Notification.EXTRA_TEXT);
                 if (title != null) {
                     entity.setTitle(title.toString());
@@ -96,5 +100,31 @@ public final class CommonUtils {
             return entity;
         }
         return null;
+    }
+
+    public static void openNotificationAccessSettings(Context context) {
+        if (context != null) {
+            Intent intent = new Intent(NOTIFICATION_LISTENERS_ACTION);
+            context.startActivity(intent);
+        }
+    }
+
+    public static boolean isGrantedNotificationAccess(Context context, String packageName) {
+        boolean result = false;
+        if (context != null && !TextUtils.isEmpty(packageName)) {
+            String grantedList = Settings.Secure.getString(context.getContentResolver(), NOTIFICATION_LISTENERS_KEY);
+            if (grantedList != null) {
+                result = grantedList.contains(packageName);
+            }
+        }
+        return result;
+    }
+
+    public static void checkNotificationPermission(Context context, String packageName) {
+        if (context != null && !TextUtils.isEmpty(packageName)) {
+            if (!isGrantedNotificationAccess(context, packageName)) {
+                openNotificationAccessSettings(context);
+            }
+        }
     }
 }
