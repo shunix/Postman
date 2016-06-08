@@ -4,16 +4,15 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.7.7'
     }
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.protobuf'
 
 repositories {
     jcenter()
 }
+
 
 android {
     compileSdkVersion 22
