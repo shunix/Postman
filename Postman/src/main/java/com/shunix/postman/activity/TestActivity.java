@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.shunix.postman.R;
 import com.shunix.postman.service.PostmanService;
+import com.shunix.postman.util.CommonUtils;
 
 /**
  * @author shunix
@@ -23,6 +24,9 @@ public class TestActivity extends Activity implements View.OnClickListener {
             case R.id.button2:
 
                 break;
+            case R.id.button3:
+                CommonUtils.checkNotificationPermission(this, getPackageName());
+                break;
         }
     }
 
@@ -32,5 +36,6 @@ public class TestActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.test_layout);
         findViewById(R.id.button).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
+        findViewById(R.id.button3).setOnClickListener(this);
     }
 }

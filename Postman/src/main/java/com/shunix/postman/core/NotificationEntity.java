@@ -2,6 +2,8 @@ package com.shunix.postman.core;
 
 import android.text.TextUtils;
 
+import java.util.Date;
+
 /**
  * Wrapper for a notification.
  *
@@ -68,7 +70,7 @@ public class NotificationEntity {
         if (!TextUtils.isEmpty(mContent)) {
             builder.append("Content: ").append(mContent).append(DIVIDER);
         }
-        builder.append("Timestamp: ").append(mTimestamp);
+        builder.append("Timestamp: ").append(new Date(mTimestamp));
         return builder.toString();
     }
 }

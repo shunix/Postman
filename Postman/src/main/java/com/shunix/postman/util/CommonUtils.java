@@ -113,9 +113,15 @@ public final class CommonUtils {
         boolean result = false;
         if (context != null && !TextUtils.isEmpty(packageName)) {
             String grantedList = Settings.Secure.getString(context.getContentResolver(), NOTIFICATION_LISTENERS_KEY);
+            if (Config.DEBUG) {
+                Log.d(TAG, grantedList);
+            }
             if (grantedList != null) {
                 result = grantedList.contains(packageName);
             }
+        }
+        if (Config.DEBUG) {
+            Log.d(TAG, "isGrantedNotificationAccess: " + result);
         }
         return result;
     }
