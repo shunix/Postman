@@ -114,7 +114,9 @@ public final class CommonUtils {
         if (context != null && !TextUtils.isEmpty(packageName)) {
             String grantedList = Settings.Secure.getString(context.getContentResolver(), NOTIFICATION_LISTENERS_KEY);
             if (Config.DEBUG) {
-                Log.d(TAG, grantedList);
+                if (grantedList != null) {
+                    Log.d(TAG, grantedList);
+                }
             }
             if (grantedList != null) {
                 result = grantedList.contains(packageName);

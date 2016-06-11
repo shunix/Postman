@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import com.shunix.postman.R;
+import com.shunix.postman.bluetooth.BluetoothClientProcessor;
 import com.shunix.postman.service.PostmanService;
 import com.shunix.postman.util.BluetoothUtils;
 import com.shunix.postman.util.CommonUtils;
@@ -32,9 +33,10 @@ public class TestActivity extends Activity implements View.OnClickListener {
             case R.id.button2:
                 Notification.Builder builder = new Notification.Builder(this);
                 builder.setContentTitle("Test Notification")
-                        .setContentText(String.valueOf(System.currentTimeMillis()));
+                        .setContentText(String.valueOf(System.currentTimeMillis()))
+                        .setSmallIcon(android.R.drawable.ic_lock_idle_alarm);
                 NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                notificationManager.notify(0, builder.build());
+                notificationManager.notify(1, builder.build());
                 break;
             case R.id.button3:
                 CommonUtils.checkNotificationPermission(this, getPackageName());
@@ -45,11 +47,13 @@ public class TestActivity extends Activity implements View.OnClickListener {
                         @Override
                         public void onLeScan(BluetoothDevice bluetoothDevice, int i, byte[] bytes) {
                             if (Config.DEBUG) {
-                                Log.d(TAG, "onLeScan " + bluetoothDevice.getName());
+                                Log.d(TAG, "onLeScan " + bluetoothDevice.getAddress());
                             }
+                            BluetoothClientProcessor processor = new BluetoothClientProcessor(TestActivity.this, bluetoothDevice);
+                            processor.process();
                         }
                     };
-                    BluetoothUtils.scanBLEDevices(this, callback, 30000);
+                    BluetoothUtils.scanBLEDevices(this, callback, 60000);
                 }
                 break;
 
