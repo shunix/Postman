@@ -24,4 +24,9 @@
             android:layout_height="wrap_content"
             android:text="Scan BLE Devices"
             android:id="@+id/button4" android:layout_gravity="center_horizontal"/>
+    <Button
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Start BLE Advertising"
+            android:id="@+id/button5" android:layout_gravity="center_horizontal"/>
 </LinearLayout>

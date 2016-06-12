@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Postman</string>
     <string name="service_name">Postman Service</string>
+    <string name="uuid">741e9f24-a5bc-4dd1-b7d1-41ce5bc8d935</string>
 </resources>

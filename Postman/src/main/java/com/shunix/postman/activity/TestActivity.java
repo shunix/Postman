@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import com.shunix.postman.R;
 import com.shunix.postman.bluetooth.BluetoothClientProcessor;
+import com.shunix.postman.bluetooth.BluetoothServerProcessor;
 import com.shunix.postman.service.PostmanService;
 import com.shunix.postman.util.BluetoothUtils;
 import com.shunix.postman.util.CommonUtils;
@@ -56,7 +57,12 @@ public class TestActivity extends Activity implements View.OnClickListener {
                     BluetoothUtils.scanBLEDevices(this, callback, 60000);
                 }
                 break;
-
+            case R.id.button5:
+                if (BluetoothUtils.isBLESupported(this)) {
+                    BluetoothServerProcessor processor = new BluetoothServerProcessor(this);
+                    processor.process();
+                }
+                break;
         }
     }
 
@@ -68,5 +74,6 @@ public class TestActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.button2).setOnClickListener(this);
         findViewById(R.id.button3).setOnClickListener(this);
         findViewById(R.id.button4).setOnClickListener(this);
+        findViewById(R.id.button5).setOnClickListener(this);
     }
 }
