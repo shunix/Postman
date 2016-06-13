@@ -54,7 +54,7 @@ public class TestActivity extends Activity implements View.OnClickListener {
                             processor.process();
                         }
                     };
-                    BluetoothUtils.scanBLEDevices(this, callback, 60000);
+                    BluetoothUtils.scanBLEDevices(this, callback, 10000);
                 }
                 break;
             case R.id.button5:

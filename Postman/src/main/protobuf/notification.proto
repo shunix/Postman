@@ -3,10 +3,15 @@ package com.shunix.postman.proto;
 option java_package = "com.shunix.postman.proto";
 option java_outer_classname = "NotificationProto";
 
-message NotificationMessage {
+message NotificationMessageReq {
     optional bytes bytes_icon = 1;
     optional string str_package_name = 2;
     optional uint64 uint64_timestamp = 3;
     optional string str_title = 4;
     optional string str_content = 5;
+}
+
+message NotificationMessageRsp {
+    optional uint32 uint32_ret_code = 1;
+    optional string str_ret_msg = 2;
 }

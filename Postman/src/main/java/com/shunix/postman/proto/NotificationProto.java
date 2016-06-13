@@ -8,8 +8,8 @@ public final class NotificationProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface NotificationMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.shunix.postman.proto.NotificationMessage)
+  public interface NotificationMessageReqOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.shunix.postman.proto.NotificationMessageReq)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -73,25 +73,25 @@ public final class NotificationProto {
         getStrContentBytes();
   }
   /**
-   * Protobuf type {@code com.shunix.postman.proto.NotificationMessage}
+   * Protobuf type {@code com.shunix.postman.proto.NotificationMessageReq}
    */
-  public static final class NotificationMessage extends
+  public static final class NotificationMessageReq extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:com.shunix.postman.proto.NotificationMessage)
-      NotificationMessageOrBuilder {
-    // Use NotificationMessage.newBuilder() to construct.
-    private NotificationMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:com.shunix.postman.proto.NotificationMessageReq)
+      NotificationMessageReqOrBuilder {
+    // Use NotificationMessageReq.newBuilder() to construct.
+    private NotificationMessageReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private NotificationMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private NotificationMessageReq(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final NotificationMessage defaultInstance;
-    public static NotificationMessage getDefaultInstance() {
+    private static final NotificationMessageReq defaultInstance;
+    public static NotificationMessageReq getDefaultInstance() {
       return defaultInstance;
     }
 
-    public NotificationMessage getDefaultInstanceForType() {
+    public NotificationMessageReq getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -101,7 +101,7 @@ public final class NotificationProto {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private NotificationMessage(
+    private NotificationMessageReq(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -166,28 +166,28 @@ public final class NotificationProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessage_descriptor;
+      return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessage_fieldAccessorTable
+      return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.shunix.postman.proto.NotificationProto.NotificationMessage.class, com.shunix.postman.proto.NotificationProto.NotificationMessage.Builder.class);
+              com.shunix.postman.proto.NotificationProto.NotificationMessageReq.class, com.shunix.postman.proto.NotificationProto.NotificationMessageReq.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<NotificationMessage> PARSER =
-        new com.google.protobuf.AbstractParser<NotificationMessage>() {
-      public NotificationMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<NotificationMessageReq> PARSER =
+        new com.google.protobuf.AbstractParser<NotificationMessageReq>() {
+      public NotificationMessageReq parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new NotificationMessage(input, extensionRegistry);
+        return new NotificationMessageReq(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<NotificationMessage> getParserForType() {
+    public com.google.protobuf.Parser<NotificationMessageReq> getParserForType() {
       return PARSER;
     }
 
@@ -424,53 +424,53 @@ public final class NotificationProto {
       return super.writeReplace();
     }
 
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseFrom(
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseFrom(
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseFrom(byte[] data)
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseFrom(
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseFrom(java.io.InputStream input)
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseFrom(
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseDelimitedFrom(java.io.InputStream input)
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseDelimitedFrom(
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseFrom(
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.shunix.postman.proto.NotificationProto.NotificationMessage parseFrom(
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageReq parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -479,7 +479,7 @@ public final class NotificationProto {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.shunix.postman.proto.NotificationProto.NotificationMessage prototype) {
+    public static Builder newBuilder(com.shunix.postman.proto.NotificationProto.NotificationMessageReq prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -491,25 +491,25 @@ public final class NotificationProto {
       return builder;
     }
     /**
-     * Protobuf type {@code com.shunix.postman.proto.NotificationMessage}
+     * Protobuf type {@code com.shunix.postman.proto.NotificationMessageReq}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.shunix.postman.proto.NotificationMessage)
-        com.shunix.postman.proto.NotificationProto.NotificationMessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.shunix.postman.proto.NotificationMessageReq)
+        com.shunix.postman.proto.NotificationProto.NotificationMessageReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessage_descriptor;
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessage_fieldAccessorTable
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageReq_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.shunix.postman.proto.NotificationProto.NotificationMessage.class, com.shunix.postman.proto.NotificationProto.NotificationMessage.Builder.class);
+                com.shunix.postman.proto.NotificationProto.NotificationMessageReq.class, com.shunix.postman.proto.NotificationProto.NotificationMessageReq.Builder.class);
       }
 
-      // Construct using com.shunix.postman.proto.NotificationProto.NotificationMessage.newBuilder()
+      // Construct using com.shunix.postman.proto.NotificationProto.NotificationMessageReq.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -548,23 +548,23 @@ public final class NotificationProto {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessage_descriptor;
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor;
       }
 
-      public com.shunix.postman.proto.NotificationProto.NotificationMessage getDefaultInstanceForType() {
-        return com.shunix.postman.proto.NotificationProto.NotificationMessage.getDefaultInstance();
+      public com.shunix.postman.proto.NotificationProto.NotificationMessageReq getDefaultInstanceForType() {
+        return com.shunix.postman.proto.NotificationProto.NotificationMessageReq.getDefaultInstance();
       }
 
-      public com.shunix.postman.proto.NotificationProto.NotificationMessage build() {
-        com.shunix.postman.proto.NotificationProto.NotificationMessage result = buildPartial();
+      public com.shunix.postman.proto.NotificationProto.NotificationMessageReq build() {
+        com.shunix.postman.proto.NotificationProto.NotificationMessageReq result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.shunix.postman.proto.NotificationProto.NotificationMessage buildPartial() {
-        com.shunix.postman.proto.NotificationProto.NotificationMessage result = new com.shunix.postman.proto.NotificationProto.NotificationMessage(this);
+      public com.shunix.postman.proto.NotificationProto.NotificationMessageReq buildPartial() {
+        com.shunix.postman.proto.NotificationProto.NotificationMessageReq result = new com.shunix.postman.proto.NotificationProto.NotificationMessageReq(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -593,16 +593,16 @@ public final class NotificationProto {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.shunix.postman.proto.NotificationProto.NotificationMessage) {
-          return mergeFrom((com.shunix.postman.proto.NotificationProto.NotificationMessage)other);
+        if (other instanceof com.shunix.postman.proto.NotificationProto.NotificationMessageReq) {
+          return mergeFrom((com.shunix.postman.proto.NotificationProto.NotificationMessageReq)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.shunix.postman.proto.NotificationProto.NotificationMessage other) {
-        if (other == com.shunix.postman.proto.NotificationProto.NotificationMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.shunix.postman.proto.NotificationProto.NotificationMessageReq other) {
+        if (other == com.shunix.postman.proto.NotificationProto.NotificationMessageReq.getDefaultInstance()) return this;
         if (other.hasBytesIcon()) {
           setBytesIcon(other.getBytesIcon());
         }
@@ -636,11 +636,11 @@ public final class NotificationProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.shunix.postman.proto.NotificationProto.NotificationMessage parsedMessage = null;
+        com.shunix.postman.proto.NotificationProto.NotificationMessageReq parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.shunix.postman.proto.NotificationProto.NotificationMessage) e.getUnfinishedMessage();
+          parsedMessage = (com.shunix.postman.proto.NotificationProto.NotificationMessageReq) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -946,22 +946,581 @@ public final class NotificationProto {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:com.shunix.postman.proto.NotificationMessage)
+      // @@protoc_insertion_point(builder_scope:com.shunix.postman.proto.NotificationMessageReq)
     }
 
     static {
-      defaultInstance = new NotificationMessage(true);
+      defaultInstance = new NotificationMessageReq(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:com.shunix.postman.proto.NotificationMessage)
+    // @@protoc_insertion_point(class_scope:com.shunix.postman.proto.NotificationMessageReq)
+  }
+
+  public interface NotificationMessageRspOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.shunix.postman.proto.NotificationMessageRsp)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional uint32 uint32_ret_code = 1;</code>
+     */
+    boolean hasUint32RetCode();
+    /**
+     * <code>optional uint32 uint32_ret_code = 1;</code>
+     */
+    int getUint32RetCode();
+
+    /**
+     * <code>optional string str_ret_msg = 2;</code>
+     */
+    boolean hasStrRetMsg();
+    /**
+     * <code>optional string str_ret_msg = 2;</code>
+     */
+    java.lang.String getStrRetMsg();
+    /**
+     * <code>optional string str_ret_msg = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getStrRetMsgBytes();
+  }
+  /**
+   * Protobuf type {@code com.shunix.postman.proto.NotificationMessageRsp}
+   */
+  public static final class NotificationMessageRsp extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:com.shunix.postman.proto.NotificationMessageRsp)
+      NotificationMessageRspOrBuilder {
+    // Use NotificationMessageRsp.newBuilder() to construct.
+    private NotificationMessageRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private NotificationMessageRsp(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final NotificationMessageRsp defaultInstance;
+    public static NotificationMessageRsp getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public NotificationMessageRsp getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NotificationMessageRsp(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              uint32RetCode_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              strRetMsg_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageRsp_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageRsp_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.shunix.postman.proto.NotificationProto.NotificationMessageRsp.class, com.shunix.postman.proto.NotificationProto.NotificationMessageRsp.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<NotificationMessageRsp> PARSER =
+        new com.google.protobuf.AbstractParser<NotificationMessageRsp>() {
+      public NotificationMessageRsp parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NotificationMessageRsp(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NotificationMessageRsp> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int UINT32_RET_CODE_FIELD_NUMBER = 1;
+    private int uint32RetCode_;
+    /**
+     * <code>optional uint32 uint32_ret_code = 1;</code>
+     */
+    public boolean hasUint32RetCode() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint32 uint32_ret_code = 1;</code>
+     */
+    public int getUint32RetCode() {
+      return uint32RetCode_;
+    }
+
+    public static final int STR_RET_MSG_FIELD_NUMBER = 2;
+    private java.lang.Object strRetMsg_;
+    /**
+     * <code>optional string str_ret_msg = 2;</code>
+     */
+    public boolean hasStrRetMsg() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string str_ret_msg = 2;</code>
+     */
+    public java.lang.String getStrRetMsg() {
+      java.lang.Object ref = strRetMsg_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strRetMsg_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_ret_msg = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStrRetMsgBytes() {
+      java.lang.Object ref = strRetMsg_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strRetMsg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      uint32RetCode_ = 0;
+      strRetMsg_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, uint32RetCode_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getStrRetMsgBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, uint32RetCode_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getStrRetMsgBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.shunix.postman.proto.NotificationProto.NotificationMessageRsp prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.shunix.postman.proto.NotificationMessageRsp}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.shunix.postman.proto.NotificationMessageRsp)
+        com.shunix.postman.proto.NotificationProto.NotificationMessageRspOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageRsp_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageRsp_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.shunix.postman.proto.NotificationProto.NotificationMessageRsp.class, com.shunix.postman.proto.NotificationProto.NotificationMessageRsp.Builder.class);
+      }
+
+      // Construct using com.shunix.postman.proto.NotificationProto.NotificationMessageRsp.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        uint32RetCode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        strRetMsg_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_NotificationMessageRsp_descriptor;
+      }
+
+      public com.shunix.postman.proto.NotificationProto.NotificationMessageRsp getDefaultInstanceForType() {
+        return com.shunix.postman.proto.NotificationProto.NotificationMessageRsp.getDefaultInstance();
+      }
+
+      public com.shunix.postman.proto.NotificationProto.NotificationMessageRsp build() {
+        com.shunix.postman.proto.NotificationProto.NotificationMessageRsp result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.shunix.postman.proto.NotificationProto.NotificationMessageRsp buildPartial() {
+        com.shunix.postman.proto.NotificationProto.NotificationMessageRsp result = new com.shunix.postman.proto.NotificationProto.NotificationMessageRsp(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.uint32RetCode_ = uint32RetCode_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.strRetMsg_ = strRetMsg_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.shunix.postman.proto.NotificationProto.NotificationMessageRsp) {
+          return mergeFrom((com.shunix.postman.proto.NotificationProto.NotificationMessageRsp)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.shunix.postman.proto.NotificationProto.NotificationMessageRsp other) {
+        if (other == com.shunix.postman.proto.NotificationProto.NotificationMessageRsp.getDefaultInstance()) return this;
+        if (other.hasUint32RetCode()) {
+          setUint32RetCode(other.getUint32RetCode());
+        }
+        if (other.hasStrRetMsg()) {
+          bitField0_ |= 0x00000002;
+          strRetMsg_ = other.strRetMsg_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.shunix.postman.proto.NotificationProto.NotificationMessageRsp parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.shunix.postman.proto.NotificationProto.NotificationMessageRsp) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int uint32RetCode_ ;
+      /**
+       * <code>optional uint32 uint32_ret_code = 1;</code>
+       */
+      public boolean hasUint32RetCode() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint32 uint32_ret_code = 1;</code>
+       */
+      public int getUint32RetCode() {
+        return uint32RetCode_;
+      }
+      /**
+       * <code>optional uint32 uint32_ret_code = 1;</code>
+       */
+      public Builder setUint32RetCode(int value) {
+        bitField0_ |= 0x00000001;
+        uint32RetCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 uint32_ret_code = 1;</code>
+       */
+      public Builder clearUint32RetCode() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        uint32RetCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object strRetMsg_ = "";
+      /**
+       * <code>optional string str_ret_msg = 2;</code>
+       */
+      public boolean hasStrRetMsg() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string str_ret_msg = 2;</code>
+       */
+      public java.lang.String getStrRetMsg() {
+        java.lang.Object ref = strRetMsg_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            strRetMsg_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_ret_msg = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStrRetMsgBytes() {
+        java.lang.Object ref = strRetMsg_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strRetMsg_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_ret_msg = 2;</code>
+       */
+      public Builder setStrRetMsg(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        strRetMsg_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_ret_msg = 2;</code>
+       */
+      public Builder clearStrRetMsg() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        strRetMsg_ = getDefaultInstance().getStrRetMsg();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_ret_msg = 2;</code>
+       */
+      public Builder setStrRetMsgBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        strRetMsg_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.shunix.postman.proto.NotificationMessageRsp)
+    }
+
+    static {
+      defaultInstance = new NotificationMessageRsp(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.shunix.postman.proto.NotificationMessageRsp)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_shunix_postman_proto_NotificationMessage_descriptor;
+    internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_shunix_postman_proto_NotificationMessage_fieldAccessorTable;
+      internal_static_com_shunix_postman_proto_NotificationMessageReq_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_shunix_postman_proto_NotificationMessageRsp_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_shunix_postman_proto_NotificationMessageRsp_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -972,11 +1531,13 @@ public final class NotificationProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\022notification.proto\022\030com.shunix.postman" +
-      ".proto\"\205\001\n\023NotificationMessage\022\022\n\nbytes_" +
-      "icon\030\001 \001(\014\022\030\n\020str_package_name\030\002 \001(\t\022\030\n\020" +
-      "uint64_timestamp\030\003 \001(\004\022\021\n\tstr_title\030\004 \001(" +
-      "\t\022\023\n\013str_content\030\005 \001(\tB-\n\030com.shunix.pos" +
-      "tman.protoB\021NotificationProto"
+      ".proto\"\210\001\n\026NotificationMessageReq\022\022\n\nbyt" +
+      "es_icon\030\001 \001(\014\022\030\n\020str_package_name\030\002 \001(\t\022" +
+      "\030\n\020uint64_timestamp\030\003 \001(\004\022\021\n\tstr_title\030\004" +
+      " \001(\t\022\023\n\013str_content\030\005 \001(\t\"F\n\026Notificatio" +
+      "nMessageRsp\022\027\n\017uint32_ret_code\030\001 \001(\r\022\023\n\013" +
+      "str_ret_msg\030\002 \001(\tB-\n\030com.shunix.postman." +
+      "protoB\021NotificationProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -990,12 +1551,18 @@ public final class NotificationProto {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_com_shunix_postman_proto_NotificationMessage_descriptor =
+    internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_shunix_postman_proto_NotificationMessage_fieldAccessorTable = new
+    internal_static_com_shunix_postman_proto_NotificationMessageReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_com_shunix_postman_proto_NotificationMessage_descriptor,
+        internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor,
         new java.lang.String[] { "BytesIcon", "StrPackageName", "Uint64Timestamp", "StrTitle", "StrContent", });
+    internal_static_com_shunix_postman_proto_NotificationMessageRsp_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_com_shunix_postman_proto_NotificationMessageRsp_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_shunix_postman_proto_NotificationMessageRsp_descriptor,
+        new java.lang.String[] { "Uint32RetCode", "StrRetMsg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
