@@ -1,5 +1,9 @@
 package com.shunix.postman.service;
 
+import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
@@ -14,7 +18,16 @@ import com.shunix.postman.util.Config;
  */
 public class PostmanService extends NotificationListenerService {
     private final static String TAG = PostmanService.class.getSimpleName();
+
     private NotificationQueue mNotificationQueue;
+    private BluetoothDevice mBluetoothDevice;
+
+    private IBinder mBinder = new IPostmanInterface.Stub() {
+        @Override
+        public void connectDevice(BluetoothDevice device) throws RemoteException {
+            mBluetoothDevice = device;
+        }
+    };
 
     @Override
     public void onCreate() {
@@ -28,6 +41,11 @@ public class PostmanService extends NotificationListenerService {
     @Override
     public void onNotificationRemoved(StatusBarNotification sbn) {
         super.onNotificationRemoved(sbn);
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mBinder;
     }
 
     @Override
