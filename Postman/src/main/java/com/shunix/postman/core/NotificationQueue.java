@@ -15,7 +15,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * @author shunix
  * @since 2016/6/7
  */
-public class NotificationQueue implements INotificationObserver{
+public class NotificationQueue implements INotificationObserver {
     private final static String TAG = NotificationQueue.class.getSimpleName();
 
     private Queue<NotificationEntity> mQueue;
@@ -45,6 +45,18 @@ public class NotificationQueue implements INotificationObserver{
             return mQueue.remove(entity);
         }
         return false;
+    }
+
+    public NotificationEntity remove() {
+        return mQueue.remove();
+    }
+
+    public boolean isEmpty() {
+        return mQueue.isEmpty();
+    }
+
+    public NotificationEntity peek() {
+        return mQueue.peek();
     }
 
     @Override

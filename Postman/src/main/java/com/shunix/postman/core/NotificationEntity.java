@@ -1,6 +1,8 @@
 package com.shunix.postman.core;
 
 import android.text.TextUtils;
+import com.google.protobuf.ByteString;
+import com.shunix.postman.proto.NotificationProto;
 
 import java.util.Date;
 
@@ -72,5 +74,23 @@ public class NotificationEntity {
         }
         builder.append("Timestamp: ").append(new Date(mTimestamp));
         return builder.toString();
+    }
+
+    public NotificationProto.NotificationMessageReq marshal() {
+        NotificationProto.NotificationMessageReq.Builder builder = NotificationProto.NotificationMessageReq.newBuilder();
+        if (mIcon != null) {
+            builder.setBytesIcon(ByteString.copyFrom(mIcon));
+        }
+        if (!TextUtils.isEmpty(mPackageName)) {
+            builder.setStrPackageName(mPackageName);
+        }
+        builder.setUint64Timestamp(mTimestamp);
+        if (!TextUtils.isEmpty(mTitle)) {
+            builder.setStrTitle(mTitle);
+        }
+        if (!TextUtils.isEmpty(mContent)) {
+            builder.setStrContent(mContent);
+        }
+        return builder.build();
     }
 }

@@ -3,6 +3,9 @@ package com.shunix.postman.bluetooth;
 import android.bluetooth.*;
 import android.content.Context;
 import android.util.Log;
+import com.shunix.postman.core.NotificationEntity;
+import com.shunix.postman.core.NotificationQueue;
+import com.shunix.postman.proto.NotificationProto;
 import com.shunix.postman.util.Config;
 
 import java.util.List;
@@ -16,15 +19,30 @@ public class BluetoothClientProcessor {
 
     private BluetoothDevice mDevice;
     private Context mContext;
+    private NotificationQueue mQueue;
+    private BluetoothGatt mBluetoothGatt;
 
-    public BluetoothClientProcessor(Context context, BluetoothDevice device) {
+    public BluetoothClientProcessor(Context context, BluetoothDevice device, NotificationQueue queue) {
         mDevice = device;
         mContext = context;
+        mQueue = queue;
     }
 
     public void process() {
         if (mContext != null && mDevice != null) {
-            mDevice.connectGatt(mContext, false, mBluetoothGattCallback);
+            if (mBluetoothGatt == null) {
+                mBluetoothGatt = mDevice.connectGatt(mContext, false, mBluetoothGattCallback);
+            } else {
+                mBluetoothGatt.connect();
+            }
+            sendPacket();
+        }
+    }
+
+    private void sendPacket() {
+        if (mQueue != null && !mQueue.isEmpty()) {
+            NotificationEntity entity = mQueue.peek();
+            NotificationProto.NotificationMessageReq req = entity.marshal();
         }
     }
 
@@ -43,7 +61,7 @@ public class BluetoothClientProcessor {
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             List<BluetoothGattService> list = gatt.getServices();
             if (list != null && list.size() > 0) {
-                for(BluetoothGattService service : list) {
+                for (BluetoothGattService service : list) {
                     if (Config.DEBUG) {
                         Log.d(TAG, "onServiceDiscovered " + service.getUuid());
                     }
