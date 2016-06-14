@@ -14,6 +14,7 @@ import android.util.Log;
 import com.shunix.postman.core.NotificationEntity;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Random;
 
 /**
  * Common utils.
@@ -75,6 +76,10 @@ public final class CommonUtils {
     public static NotificationEntity generateNotificationEntity(Context context, StatusBarNotification statusBarNotification) {
         if (context != null && statusBarNotification != null) {
             NotificationEntity entity = new NotificationEntity();
+            Random random = new Random();
+            int delta = random.nextInt(1000);
+            long timestamp = System.currentTimeMillis();
+            entity.setId(timestamp + delta);
             if (!TextUtils.isEmpty(statusBarNotification.getPackageName())) {
                 entity.setPackageName(statusBarNotification.getPackageName());
                 Drawable packageIconDrawable = getPackageIcon(context, statusBarNotification.getPackageName());

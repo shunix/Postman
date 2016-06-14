@@ -14,6 +14,7 @@ import java.util.Date;
  */
 public class NotificationEntity {
     private final static String DIVIDER = "\n";
+    private long mId;
     private byte[] mIcon;
     private String mPackageName;
     private long mTimestamp;
@@ -60,9 +61,18 @@ public class NotificationEntity {
         mTitle = title;
     }
 
+    public long getId() {
+        return mId;
+    }
+
+    public void setId(long id) {
+        mId = id;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
+        builder.append("Id: ").append(mId).append(DIVIDER);
         if (!TextUtils.isEmpty(mPackageName)) {
             builder.append("Package Name: ").append(mPackageName).append(DIVIDER);
         }
@@ -78,6 +88,7 @@ public class NotificationEntity {
 
     public NotificationProto.NotificationMessageReq marshal() {
         NotificationProto.NotificationMessageReq.Builder builder = NotificationProto.NotificationMessageReq.newBuilder();
+        builder.setUint64Id(mId);
         if (mIcon != null) {
             builder.setBytesIcon(ByteString.copyFrom(mIcon));
         }
