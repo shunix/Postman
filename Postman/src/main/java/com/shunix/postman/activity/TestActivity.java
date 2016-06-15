@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import com.shunix.postman.R;
+import com.shunix.postman.bluetooth.BluetoothClientProcessor;
 import com.shunix.postman.bluetooth.BluetoothServerProcessor;
 import com.shunix.postman.service.PostmanService;
 import com.shunix.postman.util.BluetoothUtils;
@@ -49,8 +50,8 @@ public class TestActivity extends Activity implements View.OnClickListener {
                             if (Config.DEBUG) {
                                 Log.d(TAG, "onLeScan " + bluetoothDevice.getAddress());
                             }
-//                            BluetoothClientProcessor processor = new BluetoothClientProcessor(TestActivity.this, bluetoothDevice);
-//                            processor.process();
+                            BluetoothClientProcessor processor = new BluetoothClientProcessor(TestActivity.this, bluetoothDevice, null);
+                            processor.process();
                         }
                     };
                     BluetoothUtils.scanBLEDevices(this, callback, 10000);

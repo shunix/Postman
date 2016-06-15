@@ -67,7 +67,7 @@ public class BluetoothClientProcessor {
                     }
                     for (BluetoothGattCharacteristic characteristic : service.getCharacteristics()) {
                         if (Config.DEBUG) {
-                            Log.d(TAG, "BluetoothGattCharacteristic " + characteristic.toString());
+                            Log.d(TAG, "BluetoothGattCharacteristic " + characteristic.getUuid());
                         }
                     }
                 }

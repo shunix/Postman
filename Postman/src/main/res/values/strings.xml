@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Postman</string>
     <string name="service_name">Postman Service</string>
-    <string name="uuid">741e9f24-a5bc-4dd1-b7d1-41ce5bc8d935</string>
+    <string name="server_uuid">741e9f24-a5bc-4dd1-b7d1-41ce5bc8d935</string>
+    <string name="service_uuid">e8a7b93d-e9e9-4f7d-9c8e-68a8d92b64d5</string>
+    <string name="characteristic_uuid">12e2cc2a-14af-4ca3-b4f9-062dbde97d13</string>
 </resources>

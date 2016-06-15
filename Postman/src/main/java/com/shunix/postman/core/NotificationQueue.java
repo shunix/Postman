@@ -6,6 +6,7 @@ import android.util.Log;
 import com.shunix.postman.util.CommonUtils;
 import com.shunix.postman.util.Config;
 
+import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -49,6 +50,18 @@ public class NotificationQueue implements INotificationObserver {
 
     public NotificationEntity remove() {
         return mQueue.remove();
+    }
+
+    public boolean remove(long id) {
+        Iterator<NotificationEntity> iterator = mQueue.iterator();
+        while(iterator.hasNext()) {
+            NotificationEntity entity = iterator.next();
+            if (entity.getId() == id) {
+                remove(entity);
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isEmpty() {

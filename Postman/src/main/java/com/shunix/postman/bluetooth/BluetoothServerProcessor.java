@@ -39,6 +39,7 @@ public class BluetoothServerProcessor {
                     mBluetoothGattServer = bluetoothManager.openGattServer(mContext, mBluetoothGattServerCallback);
                 }
             }
+            addService();
         }
     }
 
@@ -55,7 +56,7 @@ public class BluetoothServerProcessor {
                                 .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_LOW)
                                 .setConnectable(true)
                                 .build();
-                        ParcelUuid parcelUuid = new ParcelUuid(UUID.fromString(mContext.getString(R.string.uuid)));
+                        ParcelUuid parcelUuid = new ParcelUuid(UUID.fromString(mContext.getString(R.string.server_uuid)));
                         bluetoothAdapter.setName(mContext.getString(R.string.app_name));
                         AdvertiseData advertiseData = new AdvertiseData.Builder()
                                 .addServiceUuid(parcelUuid)
@@ -66,6 +67,18 @@ public class BluetoothServerProcessor {
                     }
                 }
             }
+        }
+    }
+
+    private void addService() {
+        if (mContext != null && mBluetoothGattServer != null) {
+            BluetoothGattService bluetoothGattService = new BluetoothGattService(UUID.fromString(mContext.getString(R.string.service_uuid)),
+                    BluetoothGattService.SERVICE_TYPE_PRIMARY);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UUID.fromString(mContext.getString(R.string.characteristic_uuid)),
+                    BluetoothGattCharacteristic.PROPERTY_WRITE,
+                    BluetoothGattCharacteristic.PERMISSION_WRITE);
+            bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+            mBluetoothGattServer.addService(bluetoothGattService);
         }
     }
 
