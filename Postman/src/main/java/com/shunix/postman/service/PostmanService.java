@@ -25,6 +25,9 @@ public class PostmanService extends NotificationListenerService {
     private IBinder mBinder = new com.shunix.postman.service.IPostmanInterface.Stub() {
         @Override
         public void connectDevice(BluetoothDevice device) throws RemoteException {
+            if (Config.DEBUG) {
+                Log.d(TAG, "connectDevice " + device.getName());
+            }
             mBluetoothDevice = device;
         }
     };

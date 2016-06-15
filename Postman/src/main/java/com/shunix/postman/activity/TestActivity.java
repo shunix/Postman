@@ -5,13 +5,16 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import com.shunix.postman.R;
-import com.shunix.postman.bluetooth.BluetoothClientProcessor;
 import com.shunix.postman.bluetooth.BluetoothServerProcessor;
+import com.shunix.postman.service.IPostmanInterface;
 import com.shunix.postman.service.PostmanService;
 import com.shunix.postman.util.BluetoothUtils;
 import com.shunix.postman.util.CommonUtils;
@@ -23,13 +26,26 @@ import com.shunix.postman.util.Config;
  */
 public class TestActivity extends Activity implements View.OnClickListener {
     private final static String TAG = TestActivity.class.getSimpleName();
+    private IPostmanInterface mIPostmanInterface;
+    private ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            mIPostmanInterface = IPostmanInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
     @Override
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
             case R.id.button:
                 Intent intent = new Intent(this, PostmanService.class);
-                startService(intent);
+                bindService(intent, mServiceConnection, BIND_AUTO_CREATE);
                 break;
             case R.id.button2:
                 Notification.Builder builder = new Notification.Builder(this);
@@ -48,10 +64,17 @@ public class TestActivity extends Activity implements View.OnClickListener {
                         @Override
                         public void onLeScan(BluetoothDevice bluetoothDevice, int i, byte[] bytes) {
                             if (Config.DEBUG) {
-                                Log.d(TAG, "onLeScan " + bluetoothDevice.getAddress());
+                                Log.d(TAG, "onLeScan " + bluetoothDevice.getName() + " " + bluetoothDevice.getAddress());
                             }
-                            BluetoothClientProcessor processor = new BluetoothClientProcessor(TestActivity.this, bluetoothDevice, null);
-                            processor.process();
+                            if (bluetoothDevice.getName().equals("Postman")) {
+                                try {
+                                    mIPostmanInterface.connectDevice(bluetoothDevice);
+                                } catch (Exception e) {
+                                    if (Config.DEBUG) {
+                                        Log.e(TAG, e.getMessage());
+                                    }
+                                }
+                            }
                         }
                     };
                     BluetoothUtils.scanBLEDevices(this, callback, 10000);

@@ -3,6 +3,7 @@ package com.shunix.postman.bluetooth;
 import android.bluetooth.*;
 import android.content.Context;
 import android.util.Log;
+import com.shunix.postman.R;
 import com.shunix.postman.core.NotificationEntity;
 import com.shunix.postman.core.NotificationQueue;
 import com.shunix.postman.proto.NotificationProto;
@@ -21,6 +22,7 @@ public class BluetoothClientProcessor {
     private Context mContext;
     private NotificationQueue mQueue;
     private BluetoothGatt mBluetoothGatt;
+    private BluetoothGattCharacteristic mBluetoothGattCharacteristic;
 
     public BluetoothClientProcessor(Context context, BluetoothDevice device, NotificationQueue queue) {
         mDevice = device;
@@ -40,9 +42,13 @@ public class BluetoothClientProcessor {
     }
 
     private void sendPacket() {
-        if (mQueue != null && !mQueue.isEmpty()) {
+        if (mQueue != null && !mQueue.isEmpty() && mBluetoothGatt != null) {
             NotificationEntity entity = mQueue.peek();
             NotificationProto.NotificationMessageReq req = entity.marshal();
+            if (mBluetoothGattCharacteristic != null) {
+                mBluetoothGattCharacteristic.setValue(req.toByteArray());
+                mBluetoothGatt.writeCharacteristic(mBluetoothGattCharacteristic);
+            }
         }
     }
 
@@ -69,6 +75,10 @@ public class BluetoothClientProcessor {
                         if (Config.DEBUG) {
                             Log.d(TAG, "BluetoothGattCharacteristic " + characteristic.getUuid());
                         }
+                        if (characteristic.getUuid().toString().equals(mContext.getString(R.string.characteristic_uuid))) {
+                            mBluetoothGattCharacteristic = characteristic;
+                            break;
+                        }
                     }
                 }
             }
@@ -82,11 +92,6 @@ public class BluetoothClientProcessor {
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
             super.onCharacteristicWrite(gatt, characteristic, status);
-        }
-
-        @Override
-        public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-            super.onCharacteristicChanged(gatt, characteristic);
         }
     };
 }
