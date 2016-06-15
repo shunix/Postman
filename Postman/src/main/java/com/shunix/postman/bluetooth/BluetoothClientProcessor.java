@@ -30,15 +30,21 @@ public class BluetoothClientProcessor {
     private Handler mHandler;
 
     public BluetoothClientProcessor(Context context, BluetoothDevice device, NotificationQueue queue) {
+        if (Config.DEBUG) {
+            Log.d(TAG, "onCreate");
+        }
         mDevice = device;
         mContext = context;
         mQueue = queue;
         mHandlerThread = new HandlerThread(TAG);
-        mHandlerThread.run();
+        mHandlerThread.start();
         mHandler = new Handler(mHandlerThread.getLooper());
     }
 
     public void process() {
+        if (Config.DEBUG) {
+            Log.d(TAG, "process");
+        }
         sendPacket();
     }
 
@@ -59,6 +65,9 @@ public class BluetoothClientProcessor {
                     if (mBluetoothGattCharacteristic != null) {
                         mBluetoothGattCharacteristic.setValue(req.toByteArray());
                         mBluetoothGatt.writeCharacteristic(mBluetoothGattCharacteristic);
+                        if (Config.DEBUG) {
+                            Log.d(TAG, "write notification of id " + entity.getId());
+                        }
                     }
                 }
                 mHandler.postDelayed(this, INTERVAL);
@@ -75,6 +84,9 @@ public class BluetoothClientProcessor {
         mHandlerThread.quit();
         mHandler.removeCallbacksAndMessages(null);
         mHandler = null;
+        if (Config.DEBUG) {
+            Log.d(TAG, "onDestroy");
+        }
     }
 
     BluetoothGattCallback mBluetoothGattCallback = new BluetoothGattCallback() {

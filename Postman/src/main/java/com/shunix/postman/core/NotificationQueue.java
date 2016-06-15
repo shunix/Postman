@@ -8,6 +8,7 @@ import com.shunix.postman.util.Config;
 
 import java.util.Iterator;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -23,7 +24,7 @@ public class NotificationQueue implements INotificationObserver {
     private Context mContext;
 
     public NotificationQueue(Context context) {
-        mQueue = new LinkedBlockingQueue<>();
+        mQueue = new ConcurrentLinkedQueue<>();
         mContext = context;
     }
 

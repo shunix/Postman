@@ -1,6 +1,7 @@
 package com.shunix.postman.core;
 
 import android.text.TextUtils;
+import android.util.Base64;
 import com.google.protobuf.ByteString;
 import com.shunix.postman.proto.NotificationProto;
 
@@ -76,6 +77,9 @@ public class NotificationEntity {
         if (!TextUtils.isEmpty(mPackageName)) {
             builder.append("Package Name: ").append(mPackageName).append(DIVIDER);
         }
+        if (mIcon != null && mIcon.length > 0) {
+            builder.append("Icon: ").append(Base64.encodeToString(mIcon, Base64.DEFAULT)).append(DIVIDER);
+        }
         if (!TextUtils.isEmpty(mTitle)) {
             builder.append("Title: ").append(mTitle).append(DIVIDER);
         }
@@ -89,7 +93,7 @@ public class NotificationEntity {
     public NotificationProto.NotificationMessageReq marshal() {
         NotificationProto.NotificationMessageReq.Builder builder = NotificationProto.NotificationMessageReq.newBuilder();
         builder.setUint64Id(mId);
-        if (mIcon != null) {
+        if (mIcon != null && mIcon.length > 0) {
             builder.setBytesIcon(ByteString.copyFrom(mIcon));
         }
         if (!TextUtils.isEmpty(mPackageName)) {

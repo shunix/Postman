@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.ParcelUuid;
 import android.util.Log;
 import com.shunix.postman.R;
+import com.shunix.postman.proto.NotificationProto;
 import com.shunix.postman.util.Config;
 
 import java.util.UUID;
@@ -111,6 +112,16 @@ public class BluetoothServerProcessor {
             super.onCharacteristicWriteRequest(device, requestId, characteristic, preparedWrite, responseNeeded, offset, value);
             if (Config.DEBUG) {
                 Log.d(TAG, "onCharacteristicWriteRequest " + characteristic.getUuid());
+            }
+            try {
+                NotificationProto.NotificationMessageReq req = NotificationProto.NotificationMessageReq.parseFrom(value);
+                if (Config.DEBUG) {
+                    Log.d(TAG, "NotificationMessageReq " + req.getUint64Id());
+                }
+            } catch (Exception e) {
+                if (Config.DEBUG) {
+                    Log.e(TAG, e.getMessage());
+                }
             }
         }
     };
