@@ -2,6 +2,8 @@ package com.shunix.postman.bluetooth;
 
 import android.bluetooth.*;
 import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.util.Log;
 import com.shunix.postman.R;
 import com.shunix.postman.core.NotificationEntity;
@@ -17,39 +19,62 @@ import java.util.List;
  */
 public class BluetoothClientProcessor {
     private final static String TAG = BluetoothClientProcessor.class.getSimpleName();
+    private final static int INTERVAL = 10000;
 
     private BluetoothDevice mDevice;
     private Context mContext;
     private NotificationQueue mQueue;
     private BluetoothGatt mBluetoothGatt;
     private BluetoothGattCharacteristic mBluetoothGattCharacteristic;
+    private HandlerThread mHandlerThread;
+    private Handler mHandler;
 
     public BluetoothClientProcessor(Context context, BluetoothDevice device, NotificationQueue queue) {
         mDevice = device;
         mContext = context;
         mQueue = queue;
+        mHandlerThread = new HandlerThread(TAG);
+        mHandlerThread.run();
+        mHandler = new Handler(mHandlerThread.getLooper());
     }
 
     public void process() {
-        if (mContext != null && mDevice != null) {
-            if (mBluetoothGatt == null) {
-                mBluetoothGatt = mDevice.connectGatt(mContext, false, mBluetoothGattCallback);
-            } else {
-                mBluetoothGatt.connect();
-            }
-            sendPacket();
-        }
+        sendPacket();
     }
 
     private void sendPacket() {
-        if (mQueue != null && !mQueue.isEmpty() && mBluetoothGatt != null) {
-            NotificationEntity entity = mQueue.peek();
-            NotificationProto.NotificationMessageReq req = entity.marshal();
-            if (mBluetoothGattCharacteristic != null) {
-                mBluetoothGattCharacteristic.setValue(req.toByteArray());
-                mBluetoothGatt.writeCharacteristic(mBluetoothGattCharacteristic);
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (mQueue != null && !mQueue.isEmpty()) {
+                    if (mContext != null && mDevice != null) {
+                        if (mBluetoothGatt == null) {
+                            mBluetoothGatt = mDevice.connectGatt(mContext, false, mBluetoothGattCallback);
+                        } else {
+                            mBluetoothGatt.connect();
+                        }
+                    }
+                    NotificationEntity entity = mQueue.peek();
+                    NotificationProto.NotificationMessageReq req = entity.marshal();
+                    if (mBluetoothGattCharacteristic != null) {
+                        mBluetoothGattCharacteristic.setValue(req.toByteArray());
+                        mBluetoothGatt.writeCharacteristic(mBluetoothGattCharacteristic);
+                    }
+                }
+                mHandler.postDelayed(this, INTERVAL);
             }
-        }
+        });
+    }
+
+    public void destroy() {
+        mDevice = null;
+        mContext = null;
+        mQueue = null;
+        mBluetoothGatt.disconnect();
+        mBluetoothGattCharacteristic = null;
+        mHandlerThread.quit();
+        mHandler.removeCallbacksAndMessages(null);
+        mHandler = null;
     }
 
     BluetoothGattCallback mBluetoothGattCallback = new BluetoothGattCallback() {

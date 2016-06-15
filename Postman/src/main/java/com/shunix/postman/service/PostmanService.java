@@ -7,6 +7,7 @@ import android.os.RemoteException;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
+import com.shunix.postman.bluetooth.BluetoothClientProcessor;
 import com.shunix.postman.core.NotificationQueue;
 import com.shunix.postman.util.Config;
 
@@ -18,9 +19,11 @@ import com.shunix.postman.util.Config;
  */
 public class PostmanService extends NotificationListenerService {
     private final static String TAG = PostmanService.class.getSimpleName();
+    public final static String ACTION_CONNECT_DEVICE = "com.shunix.postman.connectdevice";
 
     private NotificationQueue mNotificationQueue;
     private BluetoothDevice mBluetoothDevice;
+    private BluetoothClientProcessor mBluetoothClientProcessor;
 
     private IBinder mBinder = new com.shunix.postman.service.IPostmanInterface.Stub() {
         @Override
@@ -29,15 +32,20 @@ public class PostmanService extends NotificationListenerService {
                 Log.d(TAG, "connectDevice " + device.getName());
             }
             mBluetoothDevice = device;
+            if (mBluetoothClientProcessor != null) {
+                mBluetoothClientProcessor.destroy();
+            }
+            mBluetoothClientProcessor = new BluetoothClientProcessor(PostmanService.this, mBluetoothDevice, mNotificationQueue);
+            mBluetoothClientProcessor.process();
         }
     };
 
     @Override
     public void onCreate() {
+        super.onCreate();
         if (Config.DEBUG) {
             Log.d(TAG, "onCreate");
         }
-        super.onCreate();
         mNotificationQueue = new NotificationQueue(getApplicationContext());
     }
 
@@ -48,7 +56,11 @@ public class PostmanService extends NotificationListenerService {
 
     @Override
     public IBinder onBind(Intent intent) {
-        return mBinder;
+        if (intent.getAction().equals(ACTION_CONNECT_DEVICE)) {
+            return mBinder;
+        } else {
+            return super.onBind(intent);
+        }
     }
 
     @Override
@@ -56,7 +68,6 @@ public class PostmanService extends NotificationListenerService {
         if (Config.DEBUG) {
             Log.d(TAG, "onNotificationPosted");
         }
-        super.onNotificationPosted(sbn);
         mNotificationQueue.onGetNotification(sbn);
     }
 }

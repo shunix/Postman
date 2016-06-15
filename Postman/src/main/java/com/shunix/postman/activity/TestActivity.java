@@ -5,7 +5,9 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ public class TestActivity extends Activity implements View.OnClickListener {
         switch (id) {
             case R.id.button:
                 Intent intent = new Intent(this, PostmanService.class);
+                intent.setAction(PostmanService.ACTION_CONNECT_DEVICE);
                 bindService(intent, mServiceConnection, BIND_AUTO_CREATE);
                 break;
             case R.id.button2:
@@ -67,6 +70,9 @@ public class TestActivity extends Activity implements View.OnClickListener {
                                 Log.d(TAG, "onLeScan " + bluetoothDevice.getName() + " " + bluetoothDevice.getAddress());
                             }
                             if (bluetoothDevice.getName().equals("Postman")) {
+                                BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+                                final BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+                                bluetoothAdapter.stopLeScan(this);
                                 try {
                                     mIPostmanInterface.connectDevice(bluetoothDevice);
                                 } catch (Exception e) {
