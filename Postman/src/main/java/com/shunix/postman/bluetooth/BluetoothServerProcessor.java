@@ -36,7 +36,7 @@ public class BluetoothServerProcessor {
     public BluetoothServerProcessor(Context context) {
         mContext = context;
         mCurrentPos = 0;
-        mLastPacketSeq = 0;
+        mLastPacketSeq = -1;
     }
 
     public void process() {
@@ -128,7 +128,7 @@ public class BluetoothServerProcessor {
                             // clear current status
                             mMessageId = req.getUint32Id();
                             mPacketCount = req.getUint32Count();
-                            mLastPacketSeq = 0;
+                            mLastPacketSeq = -1;
                             mCurrentPos = 0;
                             if (Config.DEBUG) {
                                 Log.d(TAG, "packet incomplete, dropped");
