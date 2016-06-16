@@ -14,6 +14,7 @@ import com.shunix.postman.R;
 import com.shunix.postman.proto.NotificationProto;
 import com.shunix.postman.util.Config;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 /**
@@ -26,9 +27,16 @@ public class BluetoothServerProcessor {
 
     private Context mContext;
     private BluetoothGattServer mBluetoothGattServer;
+    private byte[] mBuffer = new byte[2560];
+    private int mMessageId;
+    private int mPacketCount;
+    private int mLastPacketSeq; // seq of last received packet
+    private int mCurrentPos; // current position in mBuffer
 
     public BluetoothServerProcessor(Context context) {
         mContext = context;
+        mCurrentPos = 0;
+        mLastPacketSeq = 0;
     }
 
     public void process() {
@@ -110,9 +118,47 @@ public class BluetoothServerProcessor {
             }
             try {
                 NotificationProto.NotificationMessageReq req = NotificationProto.NotificationMessageReq.parseFrom(value);
-//                if (Config.DEBUG) {
-//                    Log.d(TAG, "NotificationMessageReq " + req.getUint64Id());
-//                }
+                if (req != null) {
+                    if (mPacketCount == 0) {
+                        mMessageId = req.getUint32Id();
+                        mPacketCount = req.getUint32Count();
+                    } else {
+                        // Check if it's the packets of same message
+                        if (req.getUint32Id() != mMessageId) {
+                            // clear current status
+                            mMessageId = req.getUint32Id();
+                            mPacketCount = req.getUint32Count();
+                            mLastPacketSeq = 0;
+                            mCurrentPos = 0;
+                            if (Config.DEBUG) {
+                                Log.d(TAG, "packet incomplete, dropped");
+                            }
+                        }
+                    }
+                    int seq = req.getUint32Seq();
+                    if (seq == mLastPacketSeq + 1) {
+                        byte[] payload = req.getBytesPayload().toByteArray();
+                        if (payload != null) {
+                            for (int i = 0; i < payload.length; ++i) {
+                                if (mCurrentPos <= mBuffer.length - 1) {
+                                    mBuffer[mCurrentPos] = payload[i];
+                                    mCurrentPos++;
+                                }
+                            }
+                        }
+                    }
+                    mLastPacketSeq = seq;
+                    if (mLastPacketSeq + 1 == mPacketCount) {
+                        // get full packet
+                        byte[] fullMessage = Arrays.copyOfRange(mBuffer, 0, mCurrentPos - 1);
+                        NotificationProto.MarshalledNotificationMessage marshalledNotificationMessage = NotificationProto.MarshalledNotificationMessage.parseFrom(fullMessage);
+                        if (marshalledNotificationMessage != null) {
+                            if (Config.DEBUG) {
+                                Log.d(TAG, "onCharacteristicWriteRequest get full message, message id: " + marshalledNotificationMessage.getUint32Id());
+                            }
+                        }
+                    }
+                }
             } catch (Exception e) {
                 if (Config.DEBUG) {
                     Log.e(TAG, e.getMessage());
