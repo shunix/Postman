@@ -60,14 +60,14 @@ public class BluetoothClientProcessor {
                             mBluetoothGatt.connect();
                         }
                     }
-                    NotificationEntity entity = mQueue.peek();
-                    NotificationProto.NotificationMessageReq req = entity.marshal();
+//                    NotificationEntity entity = mQueue.peek();
+//                    NotificationProto.NotificationMessageReq req = entity.marshal();
                     if (mBluetoothGattCharacteristic != null) {
-                        mBluetoothGattCharacteristic.setValue(req.toByteArray());
+//                        mBluetoothGattCharacteristic.setValue(req.toByteArray());
                         mBluetoothGatt.writeCharacteristic(mBluetoothGattCharacteristic);
-                        if (Config.DEBUG) {
-                            Log.d(TAG, "write notification of id " + entity.getId());
-                        }
+//                        if (Config.DEBUG) {
+//                            Log.d(TAG, "write notification of id " + entity.getId());
+//                        }
                     }
                 }
                 mHandler.postDelayed(this, INTERVAL);

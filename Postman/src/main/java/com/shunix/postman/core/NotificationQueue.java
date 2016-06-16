@@ -73,6 +73,10 @@ public class NotificationQueue implements INotificationObserver {
         return mQueue.peek();
     }
 
+    public void clear() {
+        mQueue.clear();
+    }
+
     @Override
     public void onGetNotification(StatusBarNotification notification) {
         NotificationEntity entity = CommonUtils.generateNotificationEntity(mContext, notification);

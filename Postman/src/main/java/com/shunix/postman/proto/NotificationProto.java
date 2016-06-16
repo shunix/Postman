@@ -8,78 +8,1055 @@ public final class NotificationProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface NotificationMessageReqOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.shunix.postman.proto.NotificationMessageReq)
+  public interface MarshalledNotificationMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.shunix.postman.proto.MarshalledNotificationMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional uint64 uint64_id = 1;</code>
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+     * </pre>
      */
-    boolean hasUint64Id();
+    boolean hasUint32Id();
     /**
-     * <code>optional uint64 uint64_id = 1;</code>
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+     * </pre>
      */
-    long getUint64Id();
+    int getUint32Id();
 
     /**
-     * <code>optional bytes bytes_icon = 2;</code>
+     * <code>optional string str_appname = 2;</code>
      */
-    boolean hasBytesIcon();
+    boolean hasStrAppname();
     /**
-     * <code>optional bytes bytes_icon = 2;</code>
+     * <code>optional string str_appname = 2;</code>
      */
-    com.google.protobuf.ByteString getBytesIcon();
-
+    java.lang.String getStrAppname();
     /**
-     * <code>optional string str_package_name = 3;</code>
-     */
-    boolean hasStrPackageName();
-    /**
-     * <code>optional string str_package_name = 3;</code>
-     */
-    java.lang.String getStrPackageName();
-    /**
-     * <code>optional string str_package_name = 3;</code>
+     * <code>optional string str_appname = 2;</code>
      */
     com.google.protobuf.ByteString
-        getStrPackageNameBytes();
+        getStrAppnameBytes();
 
     /**
-     * <code>optional uint64 uint64_timestamp = 4;</code>
+     * <code>optional uint64 uint64_timestamp = 3;</code>
      */
     boolean hasUint64Timestamp();
     /**
-     * <code>optional uint64 uint64_timestamp = 4;</code>
+     * <code>optional uint64 uint64_timestamp = 3;</code>
      */
     long getUint64Timestamp();
 
     /**
-     * <code>optional string str_title = 5;</code>
+     * <code>optional string str_title = 4;</code>
      */
     boolean hasStrTitle();
     /**
-     * <code>optional string str_title = 5;</code>
+     * <code>optional string str_title = 4;</code>
      */
     java.lang.String getStrTitle();
     /**
-     * <code>optional string str_title = 5;</code>
+     * <code>optional string str_title = 4;</code>
      */
     com.google.protobuf.ByteString
         getStrTitleBytes();
 
     /**
-     * <code>optional string str_content = 6;</code>
+     * <code>optional string str_content = 5;</code>
      */
     boolean hasStrContent();
     /**
-     * <code>optional string str_content = 6;</code>
+     * <code>optional string str_content = 5;</code>
      */
     java.lang.String getStrContent();
     /**
-     * <code>optional string str_content = 6;</code>
+     * <code>optional string str_content = 5;</code>
      */
     com.google.protobuf.ByteString
         getStrContentBytes();
+  }
+  /**
+   * Protobuf type {@code com.shunix.postman.proto.MarshalledNotificationMessage}
+   */
+  public static final class MarshalledNotificationMessage extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:com.shunix.postman.proto.MarshalledNotificationMessage)
+      MarshalledNotificationMessageOrBuilder {
+    // Use MarshalledNotificationMessage.newBuilder() to construct.
+    private MarshalledNotificationMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MarshalledNotificationMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MarshalledNotificationMessage defaultInstance;
+    public static MarshalledNotificationMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MarshalledNotificationMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MarshalledNotificationMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              uint32Id_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              strAppname_ = bs;
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              uint64Timestamp_ = input.readUInt64();
+              break;
+            }
+            case 34: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              strTitle_ = bs;
+              break;
+            }
+            case 42: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              strContent_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage.class, com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MarshalledNotificationMessage> PARSER =
+        new com.google.protobuf.AbstractParser<MarshalledNotificationMessage>() {
+      public MarshalledNotificationMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MarshalledNotificationMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MarshalledNotificationMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int UINT32_ID_FIELD_NUMBER = 1;
+    private int uint32Id_;
+    /**
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+     * </pre>
+     */
+    public boolean hasUint32Id() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+     * </pre>
+     */
+    public int getUint32Id() {
+      return uint32Id_;
+    }
+
+    public static final int STR_APPNAME_FIELD_NUMBER = 2;
+    private java.lang.Object strAppname_;
+    /**
+     * <code>optional string str_appname = 2;</code>
+     */
+    public boolean hasStrAppname() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string str_appname = 2;</code>
+     */
+    public java.lang.String getStrAppname() {
+      java.lang.Object ref = strAppname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strAppname_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_appname = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStrAppnameBytes() {
+      java.lang.Object ref = strAppname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strAppname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int UINT64_TIMESTAMP_FIELD_NUMBER = 3;
+    private long uint64Timestamp_;
+    /**
+     * <code>optional uint64 uint64_timestamp = 3;</code>
+     */
+    public boolean hasUint64Timestamp() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint64 uint64_timestamp = 3;</code>
+     */
+    public long getUint64Timestamp() {
+      return uint64Timestamp_;
+    }
+
+    public static final int STR_TITLE_FIELD_NUMBER = 4;
+    private java.lang.Object strTitle_;
+    /**
+     * <code>optional string str_title = 4;</code>
+     */
+    public boolean hasStrTitle() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string str_title = 4;</code>
+     */
+    public java.lang.String getStrTitle() {
+      java.lang.Object ref = strTitle_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strTitle_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_title = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStrTitleBytes() {
+      java.lang.Object ref = strTitle_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strTitle_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STR_CONTENT_FIELD_NUMBER = 5;
+    private java.lang.Object strContent_;
+    /**
+     * <code>optional string str_content = 5;</code>
+     */
+    public boolean hasStrContent() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string str_content = 5;</code>
+     */
+    public java.lang.String getStrContent() {
+      java.lang.Object ref = strContent_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strContent_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_content = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStrContentBytes() {
+      java.lang.Object ref = strContent_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strContent_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      uint32Id_ = 0;
+      strAppname_ = "";
+      uint64Timestamp_ = 0L;
+      strTitle_ = "";
+      strContent_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, uint32Id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getStrAppnameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt64(3, uint64Timestamp_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getStrTitleBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getStrContentBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, uint32Id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getStrAppnameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(3, uint64Timestamp_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getStrTitleBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getStrContentBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.shunix.postman.proto.MarshalledNotificationMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.shunix.postman.proto.MarshalledNotificationMessage)
+        com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage.class, com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage.Builder.class);
+      }
+
+      // Construct using com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        uint32Id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        strAppname_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        uint64Timestamp_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        strTitle_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        strContent_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.shunix.postman.proto.NotificationProto.internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_descriptor;
+      }
+
+      public com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage getDefaultInstanceForType() {
+        return com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage.getDefaultInstance();
+      }
+
+      public com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage build() {
+        com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage buildPartial() {
+        com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage result = new com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.uint32Id_ = uint32Id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.strAppname_ = strAppname_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.uint64Timestamp_ = uint64Timestamp_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.strTitle_ = strTitle_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.strContent_ = strContent_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage) {
+          return mergeFrom((com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage other) {
+        if (other == com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage.getDefaultInstance()) return this;
+        if (other.hasUint32Id()) {
+          setUint32Id(other.getUint32Id());
+        }
+        if (other.hasStrAppname()) {
+          bitField0_ |= 0x00000002;
+          strAppname_ = other.strAppname_;
+          onChanged();
+        }
+        if (other.hasUint64Timestamp()) {
+          setUint64Timestamp(other.getUint64Timestamp());
+        }
+        if (other.hasStrTitle()) {
+          bitField0_ |= 0x00000008;
+          strTitle_ = other.strTitle_;
+          onChanged();
+        }
+        if (other.hasStrContent()) {
+          bitField0_ |= 0x00000010;
+          strContent_ = other.strContent_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.shunix.postman.proto.NotificationProto.MarshalledNotificationMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int uint32Id_ ;
+      /**
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+       * </pre>
+       */
+      public boolean hasUint32Id() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+       * </pre>
+       */
+      public int getUint32Id() {
+        return uint32Id_;
+      }
+      /**
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+       * </pre>
+       */
+      public Builder setUint32Id(int value) {
+        bitField0_ |= 0x00000001;
+        uint32Id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+       * </pre>
+       */
+      public Builder clearUint32Id() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        uint32Id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object strAppname_ = "";
+      /**
+       * <code>optional string str_appname = 2;</code>
+       */
+      public boolean hasStrAppname() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string str_appname = 2;</code>
+       */
+      public java.lang.String getStrAppname() {
+        java.lang.Object ref = strAppname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            strAppname_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_appname = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStrAppnameBytes() {
+        java.lang.Object ref = strAppname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strAppname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_appname = 2;</code>
+       */
+      public Builder setStrAppname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        strAppname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_appname = 2;</code>
+       */
+      public Builder clearStrAppname() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        strAppname_ = getDefaultInstance().getStrAppname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_appname = 2;</code>
+       */
+      public Builder setStrAppnameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        strAppname_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long uint64Timestamp_ ;
+      /**
+       * <code>optional uint64 uint64_timestamp = 3;</code>
+       */
+      public boolean hasUint64Timestamp() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint64 uint64_timestamp = 3;</code>
+       */
+      public long getUint64Timestamp() {
+        return uint64Timestamp_;
+      }
+      /**
+       * <code>optional uint64 uint64_timestamp = 3;</code>
+       */
+      public Builder setUint64Timestamp(long value) {
+        bitField0_ |= 0x00000004;
+        uint64Timestamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 uint64_timestamp = 3;</code>
+       */
+      public Builder clearUint64Timestamp() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        uint64Timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object strTitle_ = "";
+      /**
+       * <code>optional string str_title = 4;</code>
+       */
+      public boolean hasStrTitle() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string str_title = 4;</code>
+       */
+      public java.lang.String getStrTitle() {
+        java.lang.Object ref = strTitle_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            strTitle_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_title = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStrTitleBytes() {
+        java.lang.Object ref = strTitle_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strTitle_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_title = 4;</code>
+       */
+      public Builder setStrTitle(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        strTitle_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_title = 4;</code>
+       */
+      public Builder clearStrTitle() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        strTitle_ = getDefaultInstance().getStrTitle();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_title = 4;</code>
+       */
+      public Builder setStrTitleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        strTitle_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object strContent_ = "";
+      /**
+       * <code>optional string str_content = 5;</code>
+       */
+      public boolean hasStrContent() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string str_content = 5;</code>
+       */
+      public java.lang.String getStrContent() {
+        java.lang.Object ref = strContent_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            strContent_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_content = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStrContentBytes() {
+        java.lang.Object ref = strContent_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strContent_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_content = 5;</code>
+       */
+      public Builder setStrContent(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        strContent_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_content = 5;</code>
+       */
+      public Builder clearStrContent() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        strContent_ = getDefaultInstance().getStrContent();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_content = 5;</code>
+       */
+      public Builder setStrContentBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        strContent_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.shunix.postman.proto.MarshalledNotificationMessage)
+    }
+
+    static {
+      defaultInstance = new MarshalledNotificationMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.shunix.postman.proto.MarshalledNotificationMessage)
+  }
+
+  public interface NotificationMessageReqOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.shunix.postman.proto.NotificationMessageReq)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id
+     * </pre>
+     */
+    boolean hasUint32Id();
+    /**
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id
+     * </pre>
+     */
+    int getUint32Id();
+
+    /**
+     * <code>optional uint32 uint32_count = 2;</code>
+     *
+     * <pre>
+     *128 at most, packet count
+     * </pre>
+     */
+    boolean hasUint32Count();
+    /**
+     * <code>optional uint32 uint32_count = 2;</code>
+     *
+     * <pre>
+     *128 at most, packet count
+     * </pre>
+     */
+    int getUint32Count();
+
+    /**
+     * <code>optional uint32 uint32_seq = 3;</code>
+     *
+     * <pre>
+     * 128 at most, packet sequence number
+     * </pre>
+     */
+    boolean hasUint32Seq();
+    /**
+     * <code>optional uint32 uint32_seq = 3;</code>
+     *
+     * <pre>
+     * 128 at most, packet sequence number
+     * </pre>
+     */
+    int getUint32Seq();
+
+    /**
+     * <code>optional bytes bytes_payload = 4;</code>
+     *
+     * <pre>
+     * 12 bytes at most (20 - 4 - 3 - 1)
+     * </pre>
+     */
+    boolean hasBytesPayload();
+    /**
+     * <code>optional bytes bytes_payload = 4;</code>
+     *
+     * <pre>
+     * 12 bytes at most (20 - 4 - 3 - 1)
+     * </pre>
+     */
+    com.google.protobuf.ByteString getBytesPayload();
   }
   /**
    * Protobuf type {@code com.shunix.postman.proto.NotificationMessageReq}
@@ -135,35 +1112,22 @@ public final class NotificationProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              uint64Id_ = input.readUInt64();
+              uint32Id_ = input.readUInt32();
               break;
             }
-            case 18: {
+            case 16: {
               bitField0_ |= 0x00000002;
-              bytesIcon_ = input.readBytes();
+              uint32Count_ = input.readUInt32();
               break;
             }
-            case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+            case 24: {
               bitField0_ |= 0x00000004;
-              strPackageName_ = bs;
+              uint32Seq_ = input.readUInt32();
               break;
             }
-            case 32: {
+            case 34: {
               bitField0_ |= 0x00000008;
-              uint64Timestamp_ = input.readUInt64();
-              break;
-            }
-            case 42: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000010;
-              strTitle_ = bs;
-              break;
-            }
-            case 50: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000020;
-              strContent_ = bs;
+              bytesPayload_ = input.readBytes();
               break;
             }
           }
@@ -206,184 +1170,103 @@ public final class NotificationProto {
     }
 
     private int bitField0_;
-    public static final int UINT64_ID_FIELD_NUMBER = 1;
-    private long uint64Id_;
+    public static final int UINT32_ID_FIELD_NUMBER = 1;
+    private int uint32Id_;
     /**
-     * <code>optional uint64 uint64_id = 1;</code>
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id
+     * </pre>
      */
-    public boolean hasUint64Id() {
+    public boolean hasUint32Id() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional uint64 uint64_id = 1;</code>
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id
+     * </pre>
      */
-    public long getUint64Id() {
-      return uint64Id_;
+    public int getUint32Id() {
+      return uint32Id_;
     }
 
-    public static final int BYTES_ICON_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString bytesIcon_;
+    public static final int UINT32_COUNT_FIELD_NUMBER = 2;
+    private int uint32Count_;
     /**
-     * <code>optional bytes bytes_icon = 2;</code>
+     * <code>optional uint32 uint32_count = 2;</code>
+     *
+     * <pre>
+     *128 at most, packet count
+     * </pre>
      */
-    public boolean hasBytesIcon() {
+    public boolean hasUint32Count() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional bytes bytes_icon = 2;</code>
+     * <code>optional uint32 uint32_count = 2;</code>
+     *
+     * <pre>
+     *128 at most, packet count
+     * </pre>
      */
-    public com.google.protobuf.ByteString getBytesIcon() {
-      return bytesIcon_;
+    public int getUint32Count() {
+      return uint32Count_;
     }
 
-    public static final int STR_PACKAGE_NAME_FIELD_NUMBER = 3;
-    private java.lang.Object strPackageName_;
+    public static final int UINT32_SEQ_FIELD_NUMBER = 3;
+    private int uint32Seq_;
     /**
-     * <code>optional string str_package_name = 3;</code>
+     * <code>optional uint32 uint32_seq = 3;</code>
+     *
+     * <pre>
+     * 128 at most, packet sequence number
+     * </pre>
      */
-    public boolean hasStrPackageName() {
+    public boolean hasUint32Seq() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional string str_package_name = 3;</code>
+     * <code>optional uint32 uint32_seq = 3;</code>
+     *
+     * <pre>
+     * 128 at most, packet sequence number
+     * </pre>
      */
-    public java.lang.String getStrPackageName() {
-      java.lang.Object ref = strPackageName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          strPackageName_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string str_package_name = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStrPackageNameBytes() {
-      java.lang.Object ref = strPackageName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        strPackageName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getUint32Seq() {
+      return uint32Seq_;
     }
 
-    public static final int UINT64_TIMESTAMP_FIELD_NUMBER = 4;
-    private long uint64Timestamp_;
+    public static final int BYTES_PAYLOAD_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString bytesPayload_;
     /**
-     * <code>optional uint64 uint64_timestamp = 4;</code>
+     * <code>optional bytes bytes_payload = 4;</code>
+     *
+     * <pre>
+     * 12 bytes at most (20 - 4 - 3 - 1)
+     * </pre>
      */
-    public boolean hasUint64Timestamp() {
+    public boolean hasBytesPayload() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional uint64 uint64_timestamp = 4;</code>
+     * <code>optional bytes bytes_payload = 4;</code>
+     *
+     * <pre>
+     * 12 bytes at most (20 - 4 - 3 - 1)
+     * </pre>
      */
-    public long getUint64Timestamp() {
-      return uint64Timestamp_;
-    }
-
-    public static final int STR_TITLE_FIELD_NUMBER = 5;
-    private java.lang.Object strTitle_;
-    /**
-     * <code>optional string str_title = 5;</code>
-     */
-    public boolean hasStrTitle() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional string str_title = 5;</code>
-     */
-    public java.lang.String getStrTitle() {
-      java.lang.Object ref = strTitle_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          strTitle_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string str_title = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStrTitleBytes() {
-      java.lang.Object ref = strTitle_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        strTitle_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int STR_CONTENT_FIELD_NUMBER = 6;
-    private java.lang.Object strContent_;
-    /**
-     * <code>optional string str_content = 6;</code>
-     */
-    public boolean hasStrContent() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional string str_content = 6;</code>
-     */
-    public java.lang.String getStrContent() {
-      java.lang.Object ref = strContent_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          strContent_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string str_content = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStrContentBytes() {
-      java.lang.Object ref = strContent_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        strContent_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.google.protobuf.ByteString getBytesPayload() {
+      return bytesPayload_;
     }
 
     private void initFields() {
-      uint64Id_ = 0L;
-      bytesIcon_ = com.google.protobuf.ByteString.EMPTY;
-      strPackageName_ = "";
-      uint64Timestamp_ = 0L;
-      strTitle_ = "";
-      strContent_ = "";
+      uint32Id_ = 0;
+      uint32Count_ = 0;
+      uint32Seq_ = 0;
+      bytesPayload_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -399,22 +1282,16 @@ public final class NotificationProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, uint64Id_);
+        output.writeUInt32(1, uint32Id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, bytesIcon_);
+        output.writeUInt32(2, uint32Count_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getStrPackageNameBytes());
+        output.writeUInt32(3, uint32Seq_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt64(4, uint64Timestamp_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getStrTitleBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeBytes(6, getStrContentBytes());
+        output.writeBytes(4, bytesPayload_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -427,27 +1304,19 @@ public final class NotificationProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, uint64Id_);
+          .computeUInt32Size(1, uint32Id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, bytesIcon_);
+          .computeUInt32Size(2, uint32Count_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getStrPackageNameBytes());
+          .computeUInt32Size(3, uint32Seq_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, uint64Timestamp_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getStrTitleBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getStrContentBytes());
+          .computeBytesSize(4, bytesPayload_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -566,18 +1435,14 @@ public final class NotificationProto {
 
       public Builder clear() {
         super.clear();
-        uint64Id_ = 0L;
+        uint32Id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        bytesIcon_ = com.google.protobuf.ByteString.EMPTY;
+        uint32Count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        strPackageName_ = "";
+        uint32Seq_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        uint64Timestamp_ = 0L;
+        bytesPayload_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
-        strTitle_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
-        strContent_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -609,27 +1474,19 @@ public final class NotificationProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.uint64Id_ = uint64Id_;
+        result.uint32Id_ = uint32Id_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.bytesIcon_ = bytesIcon_;
+        result.uint32Count_ = uint32Count_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.strPackageName_ = strPackageName_;
+        result.uint32Seq_ = uint32Seq_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.uint64Timestamp_ = uint64Timestamp_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.strTitle_ = strTitle_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.strContent_ = strContent_;
+        result.bytesPayload_ = bytesPayload_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -646,29 +1503,17 @@ public final class NotificationProto {
 
       public Builder mergeFrom(com.shunix.postman.proto.NotificationProto.NotificationMessageReq other) {
         if (other == com.shunix.postman.proto.NotificationProto.NotificationMessageReq.getDefaultInstance()) return this;
-        if (other.hasUint64Id()) {
-          setUint64Id(other.getUint64Id());
+        if (other.hasUint32Id()) {
+          setUint32Id(other.getUint32Id());
         }
-        if (other.hasBytesIcon()) {
-          setBytesIcon(other.getBytesIcon());
+        if (other.hasUint32Count()) {
+          setUint32Count(other.getUint32Count());
         }
-        if (other.hasStrPackageName()) {
-          bitField0_ |= 0x00000004;
-          strPackageName_ = other.strPackageName_;
-          onChanged();
+        if (other.hasUint32Seq()) {
+          setUint32Seq(other.getUint32Seq());
         }
-        if (other.hasUint64Timestamp()) {
-          setUint64Timestamp(other.getUint64Timestamp());
-        }
-        if (other.hasStrTitle()) {
-          bitField0_ |= 0x00000010;
-          strTitle_ = other.strTitle_;
-          onChanged();
-        }
-        if (other.hasStrContent()) {
-          bitField0_ |= 0x00000020;
-          strContent_ = other.strContent_;
-          onChanged();
+        if (other.hasBytesPayload()) {
+          setBytesPayload(other.getBytesPayload());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -697,329 +1542,197 @@ public final class NotificationProto {
       }
       private int bitField0_;
 
-      private long uint64Id_ ;
+      private int uint32Id_ ;
       /**
-       * <code>optional uint64 uint64_id = 1;</code>
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id
+       * </pre>
        */
-      public boolean hasUint64Id() {
+      public boolean hasUint32Id() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional uint64 uint64_id = 1;</code>
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id
+       * </pre>
        */
-      public long getUint64Id() {
-        return uint64Id_;
+      public int getUint32Id() {
+        return uint32Id_;
       }
       /**
-       * <code>optional uint64 uint64_id = 1;</code>
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id
+       * </pre>
        */
-      public Builder setUint64Id(long value) {
+      public Builder setUint32Id(int value) {
         bitField0_ |= 0x00000001;
-        uint64Id_ = value;
+        uint32Id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint64 uint64_id = 1;</code>
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id
+       * </pre>
        */
-      public Builder clearUint64Id() {
+      public Builder clearUint32Id() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        uint64Id_ = 0L;
+        uint32Id_ = 0;
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.ByteString bytesIcon_ = com.google.protobuf.ByteString.EMPTY;
+      private int uint32Count_ ;
       /**
-       * <code>optional bytes bytes_icon = 2;</code>
+       * <code>optional uint32 uint32_count = 2;</code>
+       *
+       * <pre>
+       *128 at most, packet count
+       * </pre>
        */
-      public boolean hasBytesIcon() {
+      public boolean hasUint32Count() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional bytes bytes_icon = 2;</code>
+       * <code>optional uint32 uint32_count = 2;</code>
+       *
+       * <pre>
+       *128 at most, packet count
+       * </pre>
        */
-      public com.google.protobuf.ByteString getBytesIcon() {
-        return bytesIcon_;
+      public int getUint32Count() {
+        return uint32Count_;
       }
       /**
-       * <code>optional bytes bytes_icon = 2;</code>
+       * <code>optional uint32 uint32_count = 2;</code>
+       *
+       * <pre>
+       *128 at most, packet count
+       * </pre>
        */
-      public Builder setBytesIcon(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        bytesIcon_ = value;
+      public Builder setUint32Count(int value) {
+        bitField0_ |= 0x00000002;
+        uint32Count_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes bytes_icon = 2;</code>
+       * <code>optional uint32 uint32_count = 2;</code>
+       *
+       * <pre>
+       *128 at most, packet count
+       * </pre>
        */
-      public Builder clearBytesIcon() {
+      public Builder clearUint32Count() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        bytesIcon_ = getDefaultInstance().getBytesIcon();
+        uint32Count_ = 0;
         onChanged();
         return this;
       }
 
-      private java.lang.Object strPackageName_ = "";
+      private int uint32Seq_ ;
       /**
-       * <code>optional string str_package_name = 3;</code>
+       * <code>optional uint32 uint32_seq = 3;</code>
+       *
+       * <pre>
+       * 128 at most, packet sequence number
+       * </pre>
        */
-      public boolean hasStrPackageName() {
+      public boolean hasUint32Seq() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional string str_package_name = 3;</code>
+       * <code>optional uint32 uint32_seq = 3;</code>
+       *
+       * <pre>
+       * 128 at most, packet sequence number
+       * </pre>
        */
-      public java.lang.String getStrPackageName() {
-        java.lang.Object ref = strPackageName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            strPackageName_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getUint32Seq() {
+        return uint32Seq_;
       }
       /**
-       * <code>optional string str_package_name = 3;</code>
+       * <code>optional uint32 uint32_seq = 3;</code>
+       *
+       * <pre>
+       * 128 at most, packet sequence number
+       * </pre>
        */
-      public com.google.protobuf.ByteString
-          getStrPackageNameBytes() {
-        java.lang.Object ref = strPackageName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          strPackageName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string str_package_name = 3;</code>
-       */
-      public Builder setStrPackageName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        strPackageName_ = value;
+      public Builder setUint32Seq(int value) {
+        bitField0_ |= 0x00000004;
+        uint32Seq_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string str_package_name = 3;</code>
+       * <code>optional uint32 uint32_seq = 3;</code>
+       *
+       * <pre>
+       * 128 at most, packet sequence number
+       * </pre>
        */
-      public Builder clearStrPackageName() {
+      public Builder clearUint32Seq() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        strPackageName_ = getDefaultInstance().getStrPackageName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string str_package_name = 3;</code>
-       */
-      public Builder setStrPackageNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        strPackageName_ = value;
+        uint32Seq_ = 0;
         onChanged();
         return this;
       }
 
-      private long uint64Timestamp_ ;
+      private com.google.protobuf.ByteString bytesPayload_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional uint64 uint64_timestamp = 4;</code>
+       * <code>optional bytes bytes_payload = 4;</code>
+       *
+       * <pre>
+       * 12 bytes at most (20 - 4 - 3 - 1)
+       * </pre>
        */
-      public boolean hasUint64Timestamp() {
+      public boolean hasBytesPayload() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional uint64 uint64_timestamp = 4;</code>
+       * <code>optional bytes bytes_payload = 4;</code>
+       *
+       * <pre>
+       * 12 bytes at most (20 - 4 - 3 - 1)
+       * </pre>
        */
-      public long getUint64Timestamp() {
-        return uint64Timestamp_;
+      public com.google.protobuf.ByteString getBytesPayload() {
+        return bytesPayload_;
       }
       /**
-       * <code>optional uint64 uint64_timestamp = 4;</code>
+       * <code>optional bytes bytes_payload = 4;</code>
+       *
+       * <pre>
+       * 12 bytes at most (20 - 4 - 3 - 1)
+       * </pre>
        */
-      public Builder setUint64Timestamp(long value) {
-        bitField0_ |= 0x00000008;
-        uint64Timestamp_ = value;
+      public Builder setBytesPayload(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        bytesPayload_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint64 uint64_timestamp = 4;</code>
+       * <code>optional bytes bytes_payload = 4;</code>
+       *
+       * <pre>
+       * 12 bytes at most (20 - 4 - 3 - 1)
+       * </pre>
        */
-      public Builder clearUint64Timestamp() {
+      public Builder clearBytesPayload() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        uint64Timestamp_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object strTitle_ = "";
-      /**
-       * <code>optional string str_title = 5;</code>
-       */
-      public boolean hasStrTitle() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string str_title = 5;</code>
-       */
-      public java.lang.String getStrTitle() {
-        java.lang.Object ref = strTitle_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            strTitle_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string str_title = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getStrTitleBytes() {
-        java.lang.Object ref = strTitle_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          strTitle_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string str_title = 5;</code>
-       */
-      public Builder setStrTitle(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        strTitle_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string str_title = 5;</code>
-       */
-      public Builder clearStrTitle() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        strTitle_ = getDefaultInstance().getStrTitle();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string str_title = 5;</code>
-       */
-      public Builder setStrTitleBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        strTitle_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object strContent_ = "";
-      /**
-       * <code>optional string str_content = 6;</code>
-       */
-      public boolean hasStrContent() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional string str_content = 6;</code>
-       */
-      public java.lang.String getStrContent() {
-        java.lang.Object ref = strContent_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            strContent_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string str_content = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getStrContentBytes() {
-        java.lang.Object ref = strContent_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          strContent_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string str_content = 6;</code>
-       */
-      public Builder setStrContent(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        strContent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string str_content = 6;</code>
-       */
-      public Builder clearStrContent() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        strContent_ = getDefaultInstance().getStrContent();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string str_content = 6;</code>
-       */
-      public Builder setStrContentBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        strContent_ = value;
+        bytesPayload_ = getDefaultInstance().getBytesPayload();
         onChanged();
         return this;
       }
@@ -1040,36 +1753,64 @@ public final class NotificationProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional uint64 uint64_id = 1;</code>
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+     * </pre>
      */
-    boolean hasUint64Id();
+    boolean hasUint32Id();
     /**
-     * <code>optional uint64 uint64_id = 1;</code>
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+     * </pre>
      */
-    long getUint64Id();
+    int getUint32Id();
 
     /**
      * <code>optional uint32 uint32_ret_code = 2;</code>
+     *
+     * <pre>
+     * 128 at most
+     * </pre>
      */
     boolean hasUint32RetCode();
     /**
      * <code>optional uint32 uint32_ret_code = 2;</code>
+     *
+     * <pre>
+     * 128 at most
+     * </pre>
      */
     int getUint32RetCode();
 
     /**
-     * <code>optional string str_ret_msg = 3;</code>
+     * <code>optional string bytes_error_msg = 3;</code>
+     *
+     * <pre>
+     * 14 bytes at most (20 - 3 - 2 - 1)
+     * </pre>
      */
-    boolean hasStrRetMsg();
+    boolean hasBytesErrorMsg();
     /**
-     * <code>optional string str_ret_msg = 3;</code>
+     * <code>optional string bytes_error_msg = 3;</code>
+     *
+     * <pre>
+     * 14 bytes at most (20 - 3 - 2 - 1)
+     * </pre>
      */
-    java.lang.String getStrRetMsg();
+    java.lang.String getBytesErrorMsg();
     /**
-     * <code>optional string str_ret_msg = 3;</code>
+     * <code>optional string bytes_error_msg = 3;</code>
+     *
+     * <pre>
+     * 14 bytes at most (20 - 3 - 2 - 1)
+     * </pre>
      */
     com.google.protobuf.ByteString
-        getStrRetMsgBytes();
+        getBytesErrorMsgBytes();
   }
   /**
    * Protobuf type {@code com.shunix.postman.proto.NotificationMessageRsp}
@@ -1125,7 +1866,7 @@ public final class NotificationProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              uint64Id_ = input.readUInt64();
+              uint32Id_ = input.readUInt32();
               break;
             }
             case 16: {
@@ -1136,7 +1877,7 @@ public final class NotificationProto {
             case 26: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000004;
-              strRetMsg_ = bs;
+              bytesErrorMsg_ = bs;
               break;
             }
           }
@@ -1179,49 +1920,73 @@ public final class NotificationProto {
     }
 
     private int bitField0_;
-    public static final int UINT64_ID_FIELD_NUMBER = 1;
-    private long uint64Id_;
+    public static final int UINT32_ID_FIELD_NUMBER = 1;
+    private int uint32Id_;
     /**
-     * <code>optional uint64 uint64_id = 1;</code>
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+     * </pre>
      */
-    public boolean hasUint64Id() {
+    public boolean hasUint32Id() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional uint64 uint64_id = 1;</code>
+     * <code>optional uint32 uint32_id = 1;</code>
+     *
+     * <pre>
+     * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+     * </pre>
      */
-    public long getUint64Id() {
-      return uint64Id_;
+    public int getUint32Id() {
+      return uint32Id_;
     }
 
     public static final int UINT32_RET_CODE_FIELD_NUMBER = 2;
     private int uint32RetCode_;
     /**
      * <code>optional uint32 uint32_ret_code = 2;</code>
+     *
+     * <pre>
+     * 128 at most
+     * </pre>
      */
     public boolean hasUint32RetCode() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional uint32 uint32_ret_code = 2;</code>
+     *
+     * <pre>
+     * 128 at most
+     * </pre>
      */
     public int getUint32RetCode() {
       return uint32RetCode_;
     }
 
-    public static final int STR_RET_MSG_FIELD_NUMBER = 3;
-    private java.lang.Object strRetMsg_;
+    public static final int BYTES_ERROR_MSG_FIELD_NUMBER = 3;
+    private java.lang.Object bytesErrorMsg_;
     /**
-     * <code>optional string str_ret_msg = 3;</code>
+     * <code>optional string bytes_error_msg = 3;</code>
+     *
+     * <pre>
+     * 14 bytes at most (20 - 3 - 2 - 1)
+     * </pre>
      */
-    public boolean hasStrRetMsg() {
+    public boolean hasBytesErrorMsg() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional string str_ret_msg = 3;</code>
+     * <code>optional string bytes_error_msg = 3;</code>
+     *
+     * <pre>
+     * 14 bytes at most (20 - 3 - 2 - 1)
+     * </pre>
      */
-    public java.lang.String getStrRetMsg() {
-      java.lang.Object ref = strRetMsg_;
+    public java.lang.String getBytesErrorMsg() {
+      java.lang.Object ref = bytesErrorMsg_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -1229,22 +1994,26 @@ public final class NotificationProto {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          strRetMsg_ = s;
+          bytesErrorMsg_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>optional string str_ret_msg = 3;</code>
+     * <code>optional string bytes_error_msg = 3;</code>
+     *
+     * <pre>
+     * 14 bytes at most (20 - 3 - 2 - 1)
+     * </pre>
      */
     public com.google.protobuf.ByteString
-        getStrRetMsgBytes() {
-      java.lang.Object ref = strRetMsg_;
+        getBytesErrorMsgBytes() {
+      java.lang.Object ref = bytesErrorMsg_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        strRetMsg_ = b;
+        bytesErrorMsg_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1252,9 +2021,9 @@ public final class NotificationProto {
     }
 
     private void initFields() {
-      uint64Id_ = 0L;
+      uint32Id_ = 0;
       uint32RetCode_ = 0;
-      strRetMsg_ = "";
+      bytesErrorMsg_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1270,13 +2039,13 @@ public final class NotificationProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, uint64Id_);
+        output.writeUInt32(1, uint32Id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt32(2, uint32RetCode_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getStrRetMsgBytes());
+        output.writeBytes(3, getBytesErrorMsgBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1289,7 +2058,7 @@ public final class NotificationProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, uint64Id_);
+          .computeUInt32Size(1, uint32Id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1297,7 +2066,7 @@ public final class NotificationProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getStrRetMsgBytes());
+          .computeBytesSize(3, getBytesErrorMsgBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1416,11 +2185,11 @@ public final class NotificationProto {
 
       public Builder clear() {
         super.clear();
-        uint64Id_ = 0L;
+        uint32Id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         uint32RetCode_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        strRetMsg_ = "";
+        bytesErrorMsg_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -1453,7 +2222,7 @@ public final class NotificationProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.uint64Id_ = uint64Id_;
+        result.uint32Id_ = uint32Id_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -1461,7 +2230,7 @@ public final class NotificationProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.strRetMsg_ = strRetMsg_;
+        result.bytesErrorMsg_ = bytesErrorMsg_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1478,15 +2247,15 @@ public final class NotificationProto {
 
       public Builder mergeFrom(com.shunix.postman.proto.NotificationProto.NotificationMessageRsp other) {
         if (other == com.shunix.postman.proto.NotificationProto.NotificationMessageRsp.getDefaultInstance()) return this;
-        if (other.hasUint64Id()) {
-          setUint64Id(other.getUint64Id());
+        if (other.hasUint32Id()) {
+          setUint32Id(other.getUint32Id());
         }
         if (other.hasUint32RetCode()) {
           setUint32RetCode(other.getUint32RetCode());
         }
-        if (other.hasStrRetMsg()) {
+        if (other.hasBytesErrorMsg()) {
           bitField0_ |= 0x00000004;
-          strRetMsg_ = other.strRetMsg_;
+          bytesErrorMsg_ = other.bytesErrorMsg_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -1516,34 +2285,50 @@ public final class NotificationProto {
       }
       private int bitField0_;
 
-      private long uint64Id_ ;
+      private int uint32Id_ ;
       /**
-       * <code>optional uint64 uint64_id = 1;</code>
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+       * </pre>
        */
-      public boolean hasUint64Id() {
+      public boolean hasUint32Id() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional uint64 uint64_id = 1;</code>
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+       * </pre>
        */
-      public long getUint64Id() {
-        return uint64Id_;
+      public int getUint32Id() {
+        return uint32Id_;
       }
       /**
-       * <code>optional uint64 uint64_id = 1;</code>
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+       * </pre>
        */
-      public Builder setUint64Id(long value) {
+      public Builder setUint32Id(int value) {
         bitField0_ |= 0x00000001;
-        uint64Id_ = value;
+        uint32Id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint64 uint64_id = 1;</code>
+       * <code>optional uint32 uint32_id = 1;</code>
+       *
+       * <pre>
+       * 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
+       * </pre>
        */
-      public Builder clearUint64Id() {
+      public Builder clearUint32Id() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        uint64Id_ = 0L;
+        uint32Id_ = 0;
         onChanged();
         return this;
       }
@@ -1551,18 +2336,30 @@ public final class NotificationProto {
       private int uint32RetCode_ ;
       /**
        * <code>optional uint32 uint32_ret_code = 2;</code>
+       *
+       * <pre>
+       * 128 at most
+       * </pre>
        */
       public boolean hasUint32RetCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional uint32 uint32_ret_code = 2;</code>
+       *
+       * <pre>
+       * 128 at most
+       * </pre>
        */
       public int getUint32RetCode() {
         return uint32RetCode_;
       }
       /**
        * <code>optional uint32 uint32_ret_code = 2;</code>
+       *
+       * <pre>
+       * 128 at most
+       * </pre>
        */
       public Builder setUint32RetCode(int value) {
         bitField0_ |= 0x00000002;
@@ -1572,6 +2369,10 @@ public final class NotificationProto {
       }
       /**
        * <code>optional uint32 uint32_ret_code = 2;</code>
+       *
+       * <pre>
+       * 128 at most
+       * </pre>
        */
       public Builder clearUint32RetCode() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -1580,24 +2381,32 @@ public final class NotificationProto {
         return this;
       }
 
-      private java.lang.Object strRetMsg_ = "";
+      private java.lang.Object bytesErrorMsg_ = "";
       /**
-       * <code>optional string str_ret_msg = 3;</code>
+       * <code>optional string bytes_error_msg = 3;</code>
+       *
+       * <pre>
+       * 14 bytes at most (20 - 3 - 2 - 1)
+       * </pre>
        */
-      public boolean hasStrRetMsg() {
+      public boolean hasBytesErrorMsg() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional string str_ret_msg = 3;</code>
+       * <code>optional string bytes_error_msg = 3;</code>
+       *
+       * <pre>
+       * 14 bytes at most (20 - 3 - 2 - 1)
+       * </pre>
        */
-      public java.lang.String getStrRetMsg() {
-        java.lang.Object ref = strRetMsg_;
+      public java.lang.String getBytesErrorMsg() {
+        java.lang.Object ref = bytesErrorMsg_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            strRetMsg_ = s;
+            bytesErrorMsg_ = s;
           }
           return s;
         } else {
@@ -1605,53 +2414,69 @@ public final class NotificationProto {
         }
       }
       /**
-       * <code>optional string str_ret_msg = 3;</code>
+       * <code>optional string bytes_error_msg = 3;</code>
+       *
+       * <pre>
+       * 14 bytes at most (20 - 3 - 2 - 1)
+       * </pre>
        */
       public com.google.protobuf.ByteString
-          getStrRetMsgBytes() {
-        java.lang.Object ref = strRetMsg_;
+          getBytesErrorMsgBytes() {
+        java.lang.Object ref = bytesErrorMsg_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          strRetMsg_ = b;
+          bytesErrorMsg_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string str_ret_msg = 3;</code>
+       * <code>optional string bytes_error_msg = 3;</code>
+       *
+       * <pre>
+       * 14 bytes at most (20 - 3 - 2 - 1)
+       * </pre>
        */
-      public Builder setStrRetMsg(
+      public Builder setBytesErrorMsg(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000004;
-        strRetMsg_ = value;
+        bytesErrorMsg_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string str_ret_msg = 3;</code>
+       * <code>optional string bytes_error_msg = 3;</code>
+       *
+       * <pre>
+       * 14 bytes at most (20 - 3 - 2 - 1)
+       * </pre>
        */
-      public Builder clearStrRetMsg() {
+      public Builder clearBytesErrorMsg() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        strRetMsg_ = getDefaultInstance().getStrRetMsg();
+        bytesErrorMsg_ = getDefaultInstance().getBytesErrorMsg();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string str_ret_msg = 3;</code>
+       * <code>optional string bytes_error_msg = 3;</code>
+       *
+       * <pre>
+       * 14 bytes at most (20 - 3 - 2 - 1)
+       * </pre>
        */
-      public Builder setStrRetMsgBytes(
+      public Builder setBytesErrorMsgBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000004;
-        strRetMsg_ = value;
+        bytesErrorMsg_ = value;
         onChanged();
         return this;
       }
@@ -1667,6 +2492,11 @@ public final class NotificationProto {
     // @@protoc_insertion_point(class_scope:com.shunix.postman.proto.NotificationMessageRsp)
   }
 
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor;
   private static
@@ -1687,14 +2517,16 @@ public final class NotificationProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\022notification.proto\022\030com.shunix.postman" +
-      ".proto\"\233\001\n\026NotificationMessageReq\022\021\n\tuin" +
-      "t64_id\030\001 \001(\004\022\022\n\nbytes_icon\030\002 \001(\014\022\030\n\020str_" +
-      "package_name\030\003 \001(\t\022\030\n\020uint64_timestamp\030\004" +
-      " \001(\004\022\021\n\tstr_title\030\005 \001(\t\022\023\n\013str_content\030\006" +
-      " \001(\t\"Y\n\026NotificationMessageRsp\022\021\n\tuint64" +
-      "_id\030\001 \001(\004\022\027\n\017uint32_ret_code\030\002 \001(\r\022\023\n\013st" +
-      "r_ret_msg\030\003 \001(\tB-\n\030com.shunix.postman.pr" +
-      "otoB\021NotificationProto"
+      ".proto\"\211\001\n\035MarshalledNotificationMessage" +
+      "\022\021\n\tuint32_id\030\001 \001(\r\022\023\n\013str_appname\030\002 \001(\t" +
+      "\022\030\n\020uint64_timestamp\030\003 \001(\004\022\021\n\tstr_title\030" +
+      "\004 \001(\t\022\023\n\013str_content\030\005 \001(\t\"l\n\026Notificati" +
+      "onMessageReq\022\021\n\tuint32_id\030\001 \001(\r\022\024\n\014uint3" +
+      "2_count\030\002 \001(\r\022\022\n\nuint32_seq\030\003 \001(\r\022\025\n\rbyt" +
+      "es_payload\030\004 \001(\014\"]\n\026NotificationMessageR" +
+      "sp\022\021\n\tuint32_id\030\001 \001(\r\022\027\n\017uint32_ret_code" +
+      "\030\002 \001(\r\022\027\n\017bytes_error_msg\030\003 \001(\tB-\n\030com.s",
+      "hunix.postman.protoB\021NotificationProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1708,18 +2540,24 @@ public final class NotificationProto {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor =
+    internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_shunix_postman_proto_MarshalledNotificationMessage_descriptor,
+        new java.lang.String[] { "Uint32Id", "StrAppname", "Uint64Timestamp", "StrTitle", "StrContent", });
+    internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_com_shunix_postman_proto_NotificationMessageReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_shunix_postman_proto_NotificationMessageReq_descriptor,
-        new java.lang.String[] { "Uint64Id", "BytesIcon", "StrPackageName", "Uint64Timestamp", "StrTitle", "StrContent", });
+        new java.lang.String[] { "Uint32Id", "Uint32Count", "Uint32Seq", "BytesPayload", });
     internal_static_com_shunix_postman_proto_NotificationMessageRsp_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_com_shunix_postman_proto_NotificationMessageRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_shunix_postman_proto_NotificationMessageRsp_descriptor,
-        new java.lang.String[] { "Uint64Id", "Uint32RetCode", "StrRetMsg", });
+        new java.lang.String[] { "Uint32Id", "Uint32RetCode", "BytesErrorMsg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

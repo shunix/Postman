@@ -110,9 +110,9 @@ public class BluetoothServerProcessor {
             }
             try {
                 NotificationProto.NotificationMessageReq req = NotificationProto.NotificationMessageReq.parseFrom(value);
-                if (Config.DEBUG) {
-                    Log.d(TAG, "NotificationMessageReq " + req.getUint64Id());
-                }
+//                if (Config.DEBUG) {
+//                    Log.d(TAG, "NotificationMessageReq " + req.getUint64Id());
+//                }
             } catch (Exception e) {
                 if (Config.DEBUG) {
                     Log.e(TAG, e.getMessage());

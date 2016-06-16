@@ -2,8 +2,10 @@ package com.shunix.postman.core;
 
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Log;
 import com.google.protobuf.ByteString;
 import com.shunix.postman.proto.NotificationProto;
+import com.shunix.postman.util.Config;
 
 import java.util.Date;
 
@@ -14,10 +16,11 @@ import java.util.Date;
  * @since 2016/6/7
  */
 public class NotificationEntity {
+    private final static String TAG = NotificationEntity.class.getSimpleName();
     private final static String DIVIDER = "\n";
-    private long mId;
-    private byte[] mIcon;
-    private String mPackageName;
+
+    private byte mId;
+    private String mApplicationName;
     private long mTimestamp;
     private String mTitle;
     private String mContent;
@@ -28,22 +31,6 @@ public class NotificationEntity {
 
     public void setContent(String content) {
         mContent = content;
-    }
-
-    public byte[] getIcon() {
-        return mIcon;
-    }
-
-    public void setIcon(byte[] icon) {
-        mIcon = icon;
-    }
-
-    public String getPackageName() {
-        return mPackageName;
-    }
-
-    public void setPackageName(String packageName) {
-        mPackageName = packageName;
     }
 
     public long getTimestamp() {
@@ -62,23 +49,28 @@ public class NotificationEntity {
         mTitle = title;
     }
 
-    public long getId() {
+    public byte getId() {
         return mId;
     }
 
-    public void setId(long id) {
+    public void setId(byte id) {
         mId = id;
+    }
+
+    public String getApplicationName() {
+        return mApplicationName;
+    }
+
+    public void setApplicationName(String applicationName) {
+        mApplicationName = applicationName;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Id: ").append(mId).append(DIVIDER);
-        if (!TextUtils.isEmpty(mPackageName)) {
-            builder.append("Package Name: ").append(mPackageName).append(DIVIDER);
-        }
-        if (mIcon != null && mIcon.length > 0) {
-            builder.append("Icon: ").append(Base64.encodeToString(mIcon, Base64.DEFAULT)).append(DIVIDER);
+        if (!TextUtils.isEmpty(mApplicationName)) {
+            builder.append("Application Name: ").append(mApplicationName).append(DIVIDER);
         }
         if (!TextUtils.isEmpty(mTitle)) {
             builder.append("Title: ").append(mTitle).append(DIVIDER);
@@ -90,14 +82,11 @@ public class NotificationEntity {
         return builder.toString();
     }
 
-    public NotificationProto.NotificationMessageReq marshal() {
-        NotificationProto.NotificationMessageReq.Builder builder = NotificationProto.NotificationMessageReq.newBuilder();
-        builder.setUint64Id(mId);
-        if (mIcon != null && mIcon.length > 0) {
-            builder.setBytesIcon(ByteString.copyFrom(mIcon));
-        }
-        if (!TextUtils.isEmpty(mPackageName)) {
-            builder.setStrPackageName(mPackageName);
+    public NotificationProto.MarshalledNotificationMessage marshal() {
+        NotificationProto.MarshalledNotificationMessage.Builder builder = NotificationProto.MarshalledNotificationMessage.newBuilder();
+        builder.setUint32Id(mId);
+        if (!TextUtils.isEmpty(mApplicationName)) {
+            builder.setStrAppname(mApplicationName);
         }
         builder.setUint64Timestamp(mTimestamp);
         if (!TextUtils.isEmpty(mTitle)) {
@@ -106,6 +95,10 @@ public class NotificationEntity {
         if (!TextUtils.isEmpty(mContent)) {
             builder.setStrContent(mContent);
         }
-        return builder.build();
+        NotificationProto.MarshalledNotificationMessage message = builder.build();
+        if (Config.DEBUG) {
+            Log.d(TAG, "marshalled size: " + message.getSerializedSize());
+        }
+        return message;
     }
 }
