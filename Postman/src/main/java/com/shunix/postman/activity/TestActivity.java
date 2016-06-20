@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import com.shunix.postman.R;
@@ -66,6 +67,9 @@ public class TestActivity extends Activity implements View.OnClickListener {
                     BluetoothAdapter.LeScanCallback callback = new BluetoothAdapter.LeScanCallback() {
                         @Override
                         public void onLeScan(BluetoothDevice bluetoothDevice, int i, byte[] bytes) {
+                            if (TextUtils.isEmpty(bluetoothDevice.getName())) {
+                                return;
+                            }
                             if (Config.DEBUG) {
                                 Log.d(TAG, "onLeScan " + bluetoothDevice.getName() + " " + bluetoothDevice.getAddress());
                             }
