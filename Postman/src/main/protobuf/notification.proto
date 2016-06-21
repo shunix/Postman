@@ -20,6 +20,6 @@ message NotificationMessageReq {
 
 message NotificationMessageRsp {
     optional uint32 uint32_id = 1; // 128 at most, message id, corresponded to uint32_id in NotificationMessageReq
-    optional uint32 uint32_ret_code = 2; // 128 at most
+    optional uint32 uint32_ret_code = 2; // 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
     optional string bytes_error_msg = 3; // 14 bytes at most (20 - 3 - 2 - 1)
 }

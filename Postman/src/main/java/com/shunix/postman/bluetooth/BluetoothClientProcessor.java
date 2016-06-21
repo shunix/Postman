@@ -11,9 +11,12 @@ import com.shunix.postman.core.NotificationEntity;
 import com.shunix.postman.core.NotificationQueue;
 import com.shunix.postman.proto.NotificationProto;
 import com.shunix.postman.util.Config;
+import com.shunix.postman.util.Constants;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author shunix
@@ -22,7 +25,6 @@ import java.util.List;
 public class BluetoothClientProcessor {
     private final static String TAG = BluetoothClientProcessor.class.getSimpleName();
     private final static int INTERVAL = 30000;
-    private final static int PACKET_INTERVAL = 50;
     private final static int MAX_PAYLOAD_SIZE = 12;
 
     private BluetoothDevice mDevice;
@@ -32,7 +34,7 @@ public class BluetoothClientProcessor {
     private BluetoothGattCharacteristic mBluetoothGattCharacteristic;
     private HandlerThread mHandlerThread;
     private Handler mHandler;
-    private boolean mIsSending; // indicate whether the processor is sending packets
+    private Queue<NotificationProto.NotificationMessageReq> mPendingQueue;
 
     public BluetoothClientProcessor(Context context, BluetoothDevice device, NotificationQueue queue) {
         if (Config.DEBUG) {
@@ -44,20 +46,17 @@ public class BluetoothClientProcessor {
         mHandlerThread = new HandlerThread(TAG);
         mHandlerThread.start();
         mHandler = new Handler(mHandlerThread.getLooper());
+        mPendingQueue = new LinkedBlockingQueue<>();
     }
 
     public void process() {
         if (Config.DEBUG) {
             Log.d(TAG, "process");
         }
-        sendPacket();
-    }
-
-    private void sendPacket() {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                if (mQueue != null && !mQueue.isEmpty() && !mIsSending) {
+                if (mQueue != null && !mQueue.isEmpty() && mPendingQueue.isEmpty()) {
                     if (mContext != null && mDevice != null) {
                         if (mBluetoothGatt == null) {
                             mBluetoothGatt = mDevice.connectGatt(mContext, false, mBluetoothGattCallback);
@@ -65,16 +64,31 @@ public class BluetoothClientProcessor {
                             mBluetoothGatt.connect();
                         }
                     }
-                    mIsSending = true;
                     NotificationEntity entity = mQueue.peek();
                     if (entity != null) {
-                        splitPacketAndSend(entity.marshal());
+                        fragmentMessage(entity.marshal());
                     }
-                    mIsSending = false;
                 }
                 mHandler.postDelayed(this, INTERVAL);
             }
         });
+    }
+
+    private void sendPacket() {
+        if (!mPendingQueue.isEmpty()) {
+            if (mBluetoothGattCharacteristic != null) {
+                byte[] value = mPendingQueue.peek().toByteArray();
+                if (value != null && value.length > 0) {
+                    mBluetoothGattCharacteristic.setValue(value);
+                }
+            }
+        }
+    }
+
+    private void removeMessage(NotificationProto.NotificationMessageRsp rsp) {
+        if (rsp != null && rsp.hasUint32Id()) {
+            mQueue.remove(rsp.getUint32Id());
+        }
     }
 
     /**
@@ -82,7 +96,7 @@ public class BluetoothClientProcessor {
      *
      * @param message
      */
-    private void splitPacketAndSend(NotificationProto.MarshalledNotificationMessage message) {
+    private void fragmentMessage(NotificationProto.MarshalledNotificationMessage message) {
         int id = message.getUint32Id();
         byte[] payload = message.toByteArray();
         int length = payload.length;
@@ -93,18 +107,8 @@ public class BluetoothClientProcessor {
             NotificationProto.NotificationMessageReq.Builder builder = NotificationProto.NotificationMessageReq.newBuilder();
             builder.setUint32Id(id).setUint32Count(count).setUint32Seq(seq).setBytesPayload(ByteString.copyFrom(packetPayload));
             NotificationProto.NotificationMessageReq req = builder.build();
-            if (mBluetoothGattCharacteristic != null) {
-                mBluetoothGattCharacteristic.setValue(req.toByteArray());
-                mBluetoothGatt.writeCharacteristic(mBluetoothGattCharacteristic);
-            }
             seq++;
-            try {
-                Thread.sleep(PACKET_INTERVAL);
-            } catch (InterruptedException e) {
-                if (Config.DEBUG) {
-                    Log.e(TAG, e.getMessage());
-                }
-            }
+            mPendingQueue.add(req);
         }
     }
 
@@ -117,6 +121,8 @@ public class BluetoothClientProcessor {
         mHandlerThread.quit();
         mHandler.removeCallbacksAndMessages(null);
         mHandler = null;
+        mPendingQueue.clear();
+        mPendingQueue = null;
         if (Config.DEBUG) {
             Log.d(TAG, "onDestroy");
         }
@@ -156,7 +162,34 @@ public class BluetoothClientProcessor {
 
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-            super.onCharacteristicWrite(gatt, characteristic, status);
+            byte[] value = characteristic.getValue();
+            if (value != null && value.length > 0) {
+                try {
+                    NotificationProto.NotificationMessageRsp rsp = NotificationProto.NotificationMessageRsp.parseFrom(value);
+                    if (rsp != null) {
+                        if (rsp.hasUint32RetCode()) {
+                            int retCode = rsp.getUint32RetCode();
+                            switch (retCode) {
+                                case Constants.RETCODE_NEXT_PACKET:
+                                    sendPacket();
+                                    break;
+                                case Constants.RETCODE_MSG_FINISHED:
+                                    removeMessage(rsp);
+                                    break;
+                                case Constants.RETCODE_ERROR:
+                                    mPendingQueue.clear();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    if (Config.DEBUG) {
+                        Log.d(TAG, e.getMessage());
+                    }
+                }
+            }
         }
     };
 }

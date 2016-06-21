@@ -53,7 +53,7 @@ public class NotificationQueue implements INotificationObserver {
         return mQueue.remove();
     }
 
-    public boolean remove(long id) {
+    public boolean remove(int id) {
         Iterator<NotificationEntity> iterator = mQueue.iterator();
         while(iterator.hasNext()) {
             NotificationEntity entity = iterator.next();
