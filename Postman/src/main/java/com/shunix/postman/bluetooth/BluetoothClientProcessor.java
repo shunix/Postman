@@ -68,6 +68,7 @@ public class BluetoothClientProcessor {
                     if (entity != null) {
                         fragmentMessage(entity.marshal());
                     }
+                    sendPacket();
                 }
                 mHandler.postDelayed(this, INTERVAL);
             }

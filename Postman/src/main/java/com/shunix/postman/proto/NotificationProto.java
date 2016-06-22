@@ -1773,7 +1773,7 @@ public final class NotificationProto {
      * <code>optional uint32 uint32_ret_code = 2;</code>
      *
      * <pre>
-     * 128 at most
+     * 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
      * </pre>
      */
     boolean hasUint32RetCode();
@@ -1781,7 +1781,7 @@ public final class NotificationProto {
      * <code>optional uint32 uint32_ret_code = 2;</code>
      *
      * <pre>
-     * 128 at most
+     * 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
      * </pre>
      */
     int getUint32RetCode();
@@ -1949,7 +1949,7 @@ public final class NotificationProto {
      * <code>optional uint32 uint32_ret_code = 2;</code>
      *
      * <pre>
-     * 128 at most
+     * 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
      * </pre>
      */
     public boolean hasUint32RetCode() {
@@ -1959,7 +1959,7 @@ public final class NotificationProto {
      * <code>optional uint32 uint32_ret_code = 2;</code>
      *
      * <pre>
-     * 128 at most
+     * 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
      * </pre>
      */
     public int getUint32RetCode() {
@@ -2338,7 +2338,7 @@ public final class NotificationProto {
        * <code>optional uint32 uint32_ret_code = 2;</code>
        *
        * <pre>
-       * 128 at most
+       * 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
        * </pre>
        */
       public boolean hasUint32RetCode() {
@@ -2348,7 +2348,7 @@ public final class NotificationProto {
        * <code>optional uint32 uint32_ret_code = 2;</code>
        *
        * <pre>
-       * 128 at most
+       * 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
        * </pre>
        */
       public int getUint32RetCode() {
@@ -2358,7 +2358,7 @@ public final class NotificationProto {
        * <code>optional uint32 uint32_ret_code = 2;</code>
        *
        * <pre>
-       * 128 at most
+       * 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
        * </pre>
        */
       public Builder setUint32RetCode(int value) {
@@ -2371,7 +2371,7 @@ public final class NotificationProto {
        * <code>optional uint32 uint32_ret_code = 2;</code>
        *
        * <pre>
-       * 128 at most
+       * 128 at most, 1 ready for next packet, 2 already got full message, 3 error pasing packet
        * </pre>
        */
       public Builder clearUint32RetCode() {
