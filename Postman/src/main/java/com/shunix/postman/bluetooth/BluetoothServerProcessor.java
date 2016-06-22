@@ -89,7 +89,7 @@ public class BluetoothServerProcessor {
         byte[] buffer = new byte[2560];
         int count = 0;
         while(!mPendingQueue.isEmpty()) {
-            NotificationProto.NotificationMessageReq req = mPendingQueue.peek();
+            NotificationProto.NotificationMessageReq req = mPendingQueue.poll();
             byte[] payload = req.getBytesPayload().toByteArray();
             for(int i = 0; i < payload.length; ++i) {
                 buffer[count + i] = payload[i];
@@ -111,14 +111,16 @@ public class BluetoothServerProcessor {
         return false;
     }
 
-    private void sendResponse(BluetoothDevice device, int requestId, int retCode) {
+    private void sendResponse(BluetoothDevice device, BluetoothGattCharacteristic characteristic, int requestId, int retCode) {
+        // FIXME bugs here, client didn't receive correct bytes
         try {
             NotificationProto.NotificationMessageRsp.Builder builder = NotificationProto.NotificationMessageRsp.newBuilder();
             builder.setUint32Id(mMessageId);
             builder.setUint32RetCode(retCode);
             NotificationProto.NotificationMessageRsp rsp = builder.build();
             byte[] value = rsp.toByteArray();
-            mBluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, value);
+            characteristic.setValue(value);
+            mBluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, characteristic.getValue());
             if (Config.DEBUG) {
                 Log.d(TAG, "sendResponse " + retCode);
             }
@@ -201,16 +203,16 @@ public class BluetoothServerProcessor {
                 if (isValidPacket(req)) {
                     mPendingQueue.add(req);
                     mLastPacketSeq = req.getUint32Seq();
-                    sendResponse(device, requestId, Constants.RETCODE_NEXT_PACKET);
+                    sendResponse(device, characteristic, requestId, Constants.RETCODE_NEXT_PACKET);
                 } else {
-                    sendResponse(device, requestId, Constants.RETCODE_ERROR);
+                    sendResponse(device, characteristic, requestId, Constants.RETCODE_ERROR);
                     reset();
                 }
                 if (isFullMessageReceived()) {
                     if(parseMessage()) {
-                        sendResponse(device, requestId, Constants.RETCODE_MSG_FINISHED);
+                        sendResponse(device, characteristic, requestId, Constants.RETCODE_MSG_FINISHED);
                     } else {
-                        sendResponse(device, requestId, Constants.RETCODE_ERROR);
+                        sendResponse(device, characteristic, requestId, Constants.RETCODE_ERROR);
                     }
                 }
             } catch (Exception e) {

@@ -26,6 +26,7 @@ public class BluetoothClientProcessor {
     private final static String TAG = BluetoothClientProcessor.class.getSimpleName();
     private final static int INTERVAL = 30000;
     private final static int MAX_PAYLOAD_SIZE = 12;
+    private final static int TIMEOUT = 30000;
 
     private BluetoothDevice mDevice;
     private Context mContext;
@@ -35,6 +36,13 @@ public class BluetoothClientProcessor {
     private HandlerThread mHandlerThread;
     private Handler mHandler;
     private Queue<NotificationProto.NotificationMessageReq> mPendingQueue;
+    // In case of timeout
+    private Runnable mWatchdog = new Runnable() {
+        @Override
+        public void run() {
+            reset();
+        }
+    };
 
     public BluetoothClientProcessor(Context context, BluetoothDevice device, NotificationQueue queue) {
         if (Config.DEBUG) {
@@ -53,6 +61,7 @@ public class BluetoothClientProcessor {
         if (Config.DEBUG) {
             Log.d(TAG, "process");
         }
+        startWatchdog();
         mHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -78,12 +87,26 @@ public class BluetoothClientProcessor {
     private void sendPacket() {
         if (!mPendingQueue.isEmpty()) {
             if (mBluetoothGattCharacteristic != null) {
-                byte[] value = mPendingQueue.peek().toByteArray();
+                byte[] value = mPendingQueue.poll().toByteArray();
                 if (value != null && value.length > 0) {
                     mBluetoothGattCharacteristic.setValue(value);
+                    mBluetoothGatt.writeCharacteristic(mBluetoothGattCharacteristic);
                 }
             }
         }
+    }
+
+    private void reset() {
+        mPendingQueue.clear();
+    }
+
+    private void startWatchdog() {
+        mHandler.postDelayed(mWatchdog, TIMEOUT);
+    }
+
+    private void restartWatchdog() {
+        mHandler.removeCallbacks(mWatchdog);
+        startWatchdog();
     }
 
     private void removeMessage(NotificationProto.NotificationMessageRsp rsp) {
@@ -172,15 +195,19 @@ public class BluetoothClientProcessor {
                             int retCode = rsp.getUint32RetCode();
                             switch (retCode) {
                                 case Constants.RETCODE_NEXT_PACKET:
+                                    restartWatchdog();
                                     sendPacket();
                                     break;
                                 case Constants.RETCODE_MSG_FINISHED:
+                                    restartWatchdog();
                                     removeMessage(rsp);
                                     break;
                                 case Constants.RETCODE_ERROR:
-                                    mPendingQueue.clear();
+                                    restartWatchdog();
+                                    reset();
                                     break;
                                 default:
+                                    reset();
                                     break;
                             }
                         }
